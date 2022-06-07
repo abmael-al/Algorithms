@@ -38,3 +38,26 @@ Array* push(int value, Array* array) {
 
     return array;
 }
+
+void pushAt(int value, int position, Array* array) {
+    if(position > array->current) {
+        return;
+    }
+
+    if(isFull(array->current, array->capacity)) {
+       array->capacity *= 2;
+       array->arr = realloc(array->arr, array->capacity * sizeof(int));
+    }
+
+    int previous = array->current; 
+    int posterior = previous + 1;
+
+    while(posterior != position) {
+        array->arr[posterior] = array->arr[previous];
+        --previous;
+        --posterior;
+    }
+    
+    array->arr[posterior] = value;
+    ++array->current;
+}
