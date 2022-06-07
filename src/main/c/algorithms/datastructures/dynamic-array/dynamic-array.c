@@ -61,3 +61,10 @@ void pushAt(int value, int position, Array* array) {
     array->arr[posterior] = value;
     ++array->current;
 }
+
+void print(Array array) {
+    printf("\n");
+    for(int i = 0; i < array.current; i++) {
+        printf("%d ", array.arr[i]);
+    }
+}
