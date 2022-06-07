@@ -8,7 +8,7 @@ typedef struct Array {
 } Array;
 
 Array* init(Array *array, size_t size) {
-    array->arr = calloc(size, sizeof(int));
+    array->arr = (int*)calloc(size, sizeof(int));
     array->capacity = size;
     array->current = 0;
 
