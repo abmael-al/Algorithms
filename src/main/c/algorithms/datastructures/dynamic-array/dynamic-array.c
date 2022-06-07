@@ -34,7 +34,7 @@ Array* push(int value, Array* array) {
     }
 
     array->arr[array->current] = value;
-    array->current++;
+    ++array->current;
 
     return array;
 }
