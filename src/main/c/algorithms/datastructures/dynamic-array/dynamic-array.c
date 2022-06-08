@@ -62,6 +62,16 @@ void pushAt(int value, int position, Array* array) {
     ++array->current;
 }
 
+void replaceBy(int index, int value, Array* array) {
+    int currIndex = 0;
+
+    if(currIndex > array->capacity) {
+        return;
+    }
+
+    array->arr[index] = value;
+}
+
 void print(Array array) {
     printf("\n");
     for(int i = 0; i < array.current; i++) {
