@@ -15,6 +15,10 @@ Array* init(Array *array, size_t size) {
     return array;
 }
 
+int isEmpty(int *array) {
+    return array == NULL;
+}
+
 int isFull(int current, int capacity) {
     return current == capacity;
 }
