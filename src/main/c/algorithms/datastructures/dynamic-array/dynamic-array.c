@@ -79,6 +79,10 @@ void replaceBy(int index, int value, Array* array) {
 int isQuarterOf(int value, int number) {
     return value == (number / 4);
 }
+
+int halfOf(int number) {
+    return number / 2;
+}
 void print(Array array) {
     printf("\n");
     for(int i = 0; i < array.current; i++) {
