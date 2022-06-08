@@ -83,6 +83,32 @@ int isQuarterOf(int value, int number) {
 int halfOf(int number) {
     return number / 2;
 }
+
+void deleteAt(int index, Array* array) {
+    if(isEmpty(array->arr)) {
+        return;
+    }
+
+    if(index > array->capacity) {
+        return;
+    }
+
+    int current = index;
+    int posterior = current + 1;
+    while(current != array->current) {
+        array->arr[current] = array->arr[posterior];
+        ++current;
+        ++posterior;
+    }
+
+    --array->current;
+
+    if(isQuarterOf(array->current, array->capacity)) {
+        array->capacity = halfOf(array->capacity);
+        array->arr = (int *)realloc(array->arr, array->capacity);
+    }
+}
+
 void print(Array array) {
     printf("\n");
     for(int i = 0; i < array.current; i++) {
