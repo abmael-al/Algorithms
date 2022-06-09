@@ -72,9 +72,9 @@ void pushAt(int value, int index, Array* array) {
 }
 
 void replaceBy(int index, int value, Array* array) {
-    int currIndex = 0;
+    int isOutOfRange = index > array->current;
 
-    if(currIndex > array->current) {
+    if(isOutOfRange) {
         return;
     }
 
