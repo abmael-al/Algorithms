@@ -3,13 +3,13 @@
 
 typedef struct Array {
     int *arr;
-    size_t capacity;
+    size_t size;
     size_t current;
 } Array;
 
 Array* init(Array *array, size_t size) {
     array->arr = (int*)calloc(size, sizeof(int));
-    array->capacity = size;
+    array->size = size;
     array->current = 0;
 
     return array;
@@ -19,22 +19,26 @@ int isEmpty(int *array) {
     return array == NULL;
 }
 
-int isFull(int current, int capacity) {
-    return current == capacity;
+int isFull(Array array) {
+    return array.current == array.size;
 }
 
 void freeArray(Array *array) {
     free(array->arr);
 
     array->arr = NULL;
-    array->capacity = 0;
+    array->size = 0;
     array->current = 0;
 }
 
+void resize(Array *array, int size) {
+    array->size = size;
+    array->arr = realloc(array->arr, size * sizeof(int));
+}
+
 Array* push(int value, Array* array) {
-    if(isFull(array->current, array->capacity)) {
-       array->capacity *= 2;
-       array->arr = realloc(array->arr, array->capacity * sizeof(int));
+    if(isFull(*array)) {
+       resize(array, array->size * 2);
     }
 
     array->arr[array->current] = value;
@@ -43,22 +47,21 @@ Array* push(int value, Array* array) {
     return array;
 }
 
-void pushAt(int value, int position, Array* array) {
-    if(position > array->current) {
+void pushAt(int value, int index, Array* array) {
+    if(index > array->current) {
         return;
     }
 
-    if(isFull(array->current, array->capacity)) {
-       array->capacity *= 2;
-       array->arr = realloc(array->arr, array->capacity * sizeof(int));
+    if(isFull(*array)) {
+       resize(array, array->size * 2);
     }
 
-    int previous = array->current; 
-    int posterior = previous + 1;
+    int current = array->current; 
+    int posterior = current + 1;
 
-    while(posterior != position) {
-        array->arr[posterior] = array->arr[previous];
-        --previous;
+    while(posterior != index) {
+        array->arr[posterior] = array->arr[current];
+        --current;
         --posterior;
     }
     
@@ -69,7 +72,7 @@ void pushAt(int value, int position, Array* array) {
 void replaceBy(int index, int value, Array* array) {
     int currIndex = 0;
 
-    if(currIndex > array->capacity) {
+    if(currIndex > array->current) {
         return;
     }
 
@@ -89,7 +92,17 @@ void deleteAt(int index, Array* array) {
         return;
     }
 
-    if(index > array->capacity) {
+    int isOutOfRange = index > array->current;
+
+    if(isOutOfRange) {
+        return;
+    }
+
+    int isTheLastElementInTheArray = array->current == 0 && index == 0;
+
+    if(isTheLastElementInTheArray) {
+        printf("Yeah!");
+        freeArray(array);
         return;
     }
 
@@ -103,9 +116,8 @@ void deleteAt(int index, Array* array) {
 
     --array->current;
 
-    if(isQuarterOf(array->current, array->capacity)) {
-        array->capacity = halfOf(array->capacity);
-        array->arr = (int *)realloc(array->arr, array->capacity);
+    if(isQuarterOf(array->current, array->size)) {
+        resize(array, halfOf(array->size));
     }
 }
 
@@ -114,4 +126,5 @@ void print(Array array) {
     for(int i = 0; i < array.current; i++) {
         printf("%d ", array.arr[i]);
     }
+    printf("\n");
 }
