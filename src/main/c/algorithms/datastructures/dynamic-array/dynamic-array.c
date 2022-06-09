@@ -48,7 +48,9 @@ Array* push(int value, Array* array) {
 }
 
 void pushAt(int value, int index, Array* array) {
-    if(index > array->current) {
+    int isOutOfRange = index > array->current;
+    
+    if(isOutOfRange) {
         return;
     }
 
@@ -101,7 +103,6 @@ void deleteAt(int index, Array* array) {
     int isTheLastElementInTheArray = array->current == 0 && index == 0;
 
     if(isTheLastElementInTheArray) {
-        printf("Yeah!");
         freeArray(array);
         return;
     }
