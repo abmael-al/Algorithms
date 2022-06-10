@@ -89,6 +89,22 @@ int halfOf(int number) {
     return number / 2;
 }
 
+// Remove from end and return value, returns -1 if the array is empty.
+// Time complexity: 0(1)
+int pop(Array *array) {
+    if(isEmpty(array->arr)) {
+        return -1;
+    }
+
+    int poppedValue = array->arr[array->current--];
+
+    if(isQuarterOf(array->current, array->size)) {
+        resize(array, halfOf(array->size));
+    }
+
+    return poppedValue;
+}
+
 void deleteAt(int index, Array* array) {
     if(isEmpty(array->arr)) {
         return;
