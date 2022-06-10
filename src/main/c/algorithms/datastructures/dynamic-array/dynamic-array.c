@@ -129,3 +129,15 @@ void print(Array array) {
     }
     printf("\n");
 }
+
+// Returns item at given index, returns -1 if index out of bounds.
+// Time complexity: O(1)
+int at(int index, Array array) {
+    int isOutOfBound = index > array.current;
+    
+    if(isOutOfBound) {
+        return -1;
+    }
+
+    return array.arr[index];
+}
