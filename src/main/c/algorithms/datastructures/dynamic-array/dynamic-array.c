@@ -122,6 +122,29 @@ void deleteAt(int index, Array* array) {
     }
 }
 
+void removeWhileElementAtIndexEqualsToValue(int index, int value, Array *array) {
+    if(isEmpty(array->arr)) {
+        return;
+    }
+    
+    while(array->arr[index] == value) {
+        deleteAt(index, array);
+    }
+}
+
+// Looks for value and removes index holding it (even if in multiple places).
+// Time complexity: O(n^2)
+void removeValue(int value, Array *array) {
+    if(isEmpty(array->arr)) {
+        return;
+    }
+
+    int index = 0;
+    for(index; index <= array->current; index++) {
+        removeWhileElementAtIndexEqualsToValue(index, value, array);
+    }
+}
+
 void print(Array array) {
     printf("\n");
     for(int i = 0; i < array.current; i++) {
