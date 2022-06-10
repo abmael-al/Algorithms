@@ -141,3 +141,21 @@ int at(int index, Array array) {
 
     return array.arr[index];
 }
+
+// Looks for value and returns first index with that value, -1 if not found.
+// This implementation take into consideration that the array isn't sorted out.
+// Time complexity: O(n)
+int find(int value, Array array) {
+    if(isEmpty(array.arr)) {
+        return -1;
+    }
+
+    int index = 0;
+    for(index = 0; index <= array.current; index++) {
+        if(array.arr[index] == value) {
+            return index;
+        }
+    }
+
+    return -1;
+}
