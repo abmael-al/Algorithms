@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ERR_OUT_OF_RANGE -3
+#define ERR_EMPTY_LIST -1
 #define TRUE 1
 #define FALSE 0
 
@@ -74,4 +76,26 @@ Node * back(Node *head) {
     }
 
     return iterator;
+}
+
+// Returns the value of the nth item.
+// Time complexity: O(n)
+int valueAt(int position, Node *head) {
+    Node *iterator = head;
+    
+    if(isEmpty(head)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    int currPosition = 1;
+    while(isDiff(currPosition, position) && isNotEmpty(iterator->next)) {  
+        ++currPosition;
+        iterator = iterator->next;
+    }
+    
+    if(isDiff(currPosition, position)) {
+        return ERR_OUT_OF_RANGE;
+    }
+
+    return iterator->value;
 }
