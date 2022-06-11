@@ -203,7 +203,7 @@ int popFront(Node **head) {
     return poppedValue;
 }
 
-// Removes end item and returns its value
+// Removes end item and returns its value.
 // 
 // Time complexity: O(n)
 int popBack(Node **head) {
@@ -232,4 +232,40 @@ int popBack(Node **head) {
     free(current);
 
     return poppedValue;
-} 
+}
+
+// Removes the first item in the list with this value.
+// 
+// Time complexity: O(n)
+void deleteValue(int value, Node **head) {
+    Node *previous = *head;
+    Node *current = (*head)->next;
+    
+    if(isEmpty(*head)) {
+        return;
+    }
+
+    int isFirstValue = (*head)->value == value;
+    
+    if(isFirstValue) {
+        Node *helper = *head;
+        (*head) = (*head)->next;
+        
+        free(helper);
+
+        return;
+    }
+
+    while(isDiff(current->value, value) && isNotEmpty(current->next)) {
+        previous = current;
+        current = current->next;
+    }
+
+    if(isDiff(current->value, value)) {
+        return;
+    }
+
+    previous->next = current->next;
+
+    free(current);
+}
