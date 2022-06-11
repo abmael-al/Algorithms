@@ -1,4 +1,4 @@
-# Data Structures and Algorithms Project
+# Algorithms & data structures project
 
 ## Data Structures
 - [Dynamic Array](./src/main/c/algorithms/datastructures/dynamic-array/dynamic-array.c)	 
