@@ -113,3 +113,19 @@ void print(Node *head) {
         head = head->next;
     }
 }
+
+// Inserts an item to the front of the list.
+// Time complexity: O(1)
+void appendFront(int value, Node **head) {
+    Node *node = createNode(value);
+    Node *helper = *head;
+
+    if(isEmpty(*head)) {
+        *head = node;
+        
+        return;
+    }
+
+    *head = node;
+    node->next = helper;
+}
