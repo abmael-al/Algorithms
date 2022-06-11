@@ -99,3 +99,17 @@ int valueAt(int position, Node *head) {
 
     return iterator->value;
 }
+
+void print(Node *head) {
+    if(isEmpty(head)) {
+        return;
+    }
+
+    printf("\n");
+    
+    while(isNotEmpty(head)) {
+        printf("%d ", head->value);
+        
+        head = head->next;
+    }
+}
