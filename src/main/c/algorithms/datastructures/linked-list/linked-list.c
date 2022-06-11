@@ -202,3 +202,34 @@ int popFront(Node **head) {
 
     return poppedValue;
 }
+
+// Removes end item and returns its value
+// 
+// Time complexity: O(n)
+int popBack(Node **head) {
+    Node *current = *head;
+    Node *previous = NULL;
+    int poppedValue = 0;
+
+    if(isEmpty(*head)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    while(isNotEmpty(current->next)) {
+        previous = current;
+        current = current->next;
+    }
+
+    int isTheOnlyNodeInTheList = isEmpty(previous); 
+
+    if(isTheOnlyNodeInTheList) {
+        *head = NULL;
+    }
+    else if (isNotEmpty(previous)) {
+        previous->next = NULL;
+    }
+
+    free(current);
+
+    return poppedValue;
+} 
