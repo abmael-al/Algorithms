@@ -184,3 +184,21 @@ void appendAt(int value, int position, Node **head) {
     iterator->next = node; 
     node->next = helper;
 }
+
+// Remove front item and return its value.
+// 
+// Time complexity: O(1)
+int popFront(Node **head) {
+    Node *poppedNode = *head;
+    int poppedValue = (*head)->value;
+
+    if(isEmpty(*head)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    *head = (*head)->next;
+
+    free(poppedNode);
+
+    return poppedValue;
+}
