@@ -7,6 +7,7 @@ typedef struct Array {
     size_t current;
 } Array;
 
+// Initialize array with given size.
 Array* init(Array *array, size_t size) {
     array->arr = (int*)calloc(size, sizeof(int));
     array->size = size;
@@ -23,6 +24,7 @@ int isFull(Array array) {
     return array.current == array.size;
 }
 
+// Deallocate memory and reset all variables.
 void freeArray(Array *array) {
     free(array->arr);
 
@@ -31,11 +33,14 @@ void freeArray(Array *array) {
     array->current = 0;
 }
 
+// Resize a given array with given size.
 void resize(Array *array, int size) {
     array->size = size;
     array->arr = realloc(array->arr, size * sizeof(int));
 }
 
+// Inserts value at last index.
+// Time Complexity: O(1)
 Array* push(int value, Array* array) {
     if(isFull(*array)) {
        resize(array, array->size * 2);
@@ -47,6 +52,8 @@ Array* push(int value, Array* array) {
     return array;
 }
 
+// Inserts value at index, shifts that index's value and trailing elements to the right.
+// Time Complexity: O(n)
 void pushAt(int value, int index, Array* array) {
     int isOutOfRange = index > array->current;
     
@@ -71,6 +78,8 @@ void pushAt(int value, int index, Array* array) {
     ++array->current;
 }
 
+// Replace element at index by given value.
+// Time complexity: 0(1)
 void replaceBy(int index, int value, Array* array) {
     int isOutOfRange = index > array->current;
 
@@ -105,6 +114,8 @@ int pop(Array *array) {
     return poppedValue;
 }
 
+// Delete item at index, shifting all trailing elements left.
+// Time complexity: O(n)
 void deleteAt(int index, Array* array) {
     if(isEmpty(array->arr)) {
         return;
