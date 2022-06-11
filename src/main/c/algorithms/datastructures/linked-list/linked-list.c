@@ -59,3 +59,19 @@ Node * front(Node *head) {
 
     return head;
 }
+
+// Returns back node.
+// Time complexity: O(n)
+Node * back(Node *head) {
+    Node *iterator = head;
+
+    if(isEmpty(head)) {
+        return NULL;
+    }
+
+    while(isNotEmpty(iterator->next)) {
+        iterator = iterator->next;
+    }
+
+    return iterator;
+}
