@@ -48,3 +48,14 @@ int size(Node *head) {
 
     return size;
 }
+
+
+// Returns front node.
+// Time complexity: O(1)
+Node * front(Node *head) {
+    if(isEmpty(head)) {
+        return NULL;
+    }
+
+    return head;
+}
