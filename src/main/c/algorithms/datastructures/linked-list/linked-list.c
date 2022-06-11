@@ -34,6 +34,7 @@ int isNotEmpty(Node *node) {
 }
 
 // Returns number of data elements in list.
+// 
 // Time complexity: O(n)
 int size(Node *head) {
     Node *iterator = head;
@@ -53,6 +54,7 @@ int size(Node *head) {
 
 
 // Returns front node.
+// 
 // Time complexity: O(1)
 Node * front(Node *head) {
     if(isEmpty(head)) {
@@ -63,6 +65,7 @@ Node * front(Node *head) {
 }
 
 // Returns back node.
+// 
 // Time complexity: O(n)
 Node * back(Node *head) {
     Node *iterator = head;
@@ -79,6 +82,7 @@ Node * back(Node *head) {
 }
 
 // Returns the value of the nth item.
+// 
 // Time complexity: O(n)
 int valueAt(int position, Node *head) {
     Node *iterator = head;
@@ -115,6 +119,7 @@ void print(Node *head) {
 }
 
 // Inserts an item to the front of the list.
+// 
 // Time complexity: O(1)
 void appendFront(int value, Node **head) {
     Node *node = createNode(value);
@@ -131,6 +136,7 @@ void appendFront(int value, Node **head) {
 }
 
 // Inserts an item at the end of the list.
+// 
 // Time complexity: O(n)
 void appendBack(int value, Node **head) {
     Node *node = createNode(value);
@@ -145,7 +151,7 @@ void appendBack(int value, Node **head) {
     tail->next = node;
 }
 
-// Insert value at index, so current item at that index 
+// Insert value at index, so current item at that index.
 // is pointed to by new item at index.
 // 
 // Time complexity: O(n)
