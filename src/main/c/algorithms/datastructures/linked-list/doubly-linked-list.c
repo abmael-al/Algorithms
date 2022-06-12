@@ -214,6 +214,26 @@ void appendAt(int position, int value, Node **head) {
     node->next = current;
 }
 
+// Remove front item and return its value.
+// Time complexity: O(1)
+int popFront(Node **head) {
+    if(isEmpty(*head)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    Node *current = *head;
+    Node *posterior = current->next;
+    int poppedValue = current->value;
+
+    posterior->prev = NULL;
+
+    *head = posterior;
+
+    free(current);
+
+    return poppedValue;
+}
+
 // Removes the first item in the list with this value.
 // Time complexity: O(n)
 void deleteValue(int value, Node **head) {
