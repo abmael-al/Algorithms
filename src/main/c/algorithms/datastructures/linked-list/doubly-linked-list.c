@@ -259,3 +259,49 @@ void deleteValue(int value, Node **head) {
 
     free(current);
 }
+
+// Removes node at given index.
+// Time complexity: O(n)
+void deleteAt(int position, Node **head) {
+    if(isEmpty(*head)) {
+        return;
+    }
+
+    int currPos = 1;
+    Node *current = *head;
+    Node *posterior = NULL;
+    Node *previous = NULL;
+
+    if(position == 1) {
+        posterior = current->next;
+        posterior->prev = NULL;
+
+        *head = posterior;
+
+        free(current);
+
+        return;
+    }
+
+    while(isDiff(currPos, position) && isNotEmpty(current->next)) {
+        ++currPos;
+        current = current->next;
+    }
+
+    if(isDiff(currPos, position)) {
+        return;
+    }
+
+    posterior = current->next;
+    previous = current->prev;
+
+    if(isEmpty(posterior)) {
+        previous->next = NULL;
+    }
+    else if(isNotEmpty(posterior)) {
+        posterior->prev = previous;
+        previous->next = posterior;
+    }
+
+    free(current);
+}
