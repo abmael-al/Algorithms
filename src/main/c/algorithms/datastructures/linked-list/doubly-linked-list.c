@@ -23,3 +23,7 @@ Node * createNode(int value) {
 int isDiff(int n1, int n2) {
     return (n1 != n2) ? TRUE : FALSE;
 }
+
+int isEmpty(Node *node) {
+    return (node == NULL) ? TRUE : FALSE;
+}
