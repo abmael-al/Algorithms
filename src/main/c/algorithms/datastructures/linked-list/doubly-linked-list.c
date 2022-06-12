@@ -171,3 +171,45 @@ void appendBack(int value, Node **head) {
 
     node->prev = tail;
 }
+
+
+// Insert value at index, so current item at that index.
+// is pointed to by new item at index.
+// Time complexity; O(n)
+void appendAt(int position, int value, Node **head) {
+    Node *node = createNode(value);
+    Node *current = *head;
+    Node *previous = NULL;
+    int currPos = 1;
+    
+    if(isEmpty(*head)) {
+        *head = node;
+
+        return;
+    }
+
+    if(position == 1) {
+        current->prev = node;
+        node->next = current;
+
+        *head = node;
+
+        return;
+    }
+
+    while(isDiff(currPos, position) && isNotEmpty(current->next)) {
+        ++currPos;
+        previous = current;
+        current = current->next;
+    }
+
+    if(isDiff(currPos, position)) {
+        return;
+    }
+
+    previous->next = node;
+    current->prev = node;
+
+    node->prev = previous;
+    node->next = current;
+}
