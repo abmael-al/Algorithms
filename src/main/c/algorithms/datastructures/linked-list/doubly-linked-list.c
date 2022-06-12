@@ -213,3 +213,49 @@ void appendAt(int position, int value, Node **head) {
     node->prev = previous;
     node->next = current;
 }
+
+// Removes the first item in the list with this value.
+// Time complexity: O(n)
+void deleteValue(int value, Node **head) {
+    if(isEmpty(*head)) {
+        return;
+    }
+
+    Node *current = *head;
+    Node *posterior = NULL;
+    Node *previous = NULL;
+
+    int isTheFirstNode = (*head)->value == value;
+    
+    if(isTheFirstNode) {
+        posterior = current->next;
+        posterior->prev = NULL;
+
+        *head = posterior;
+
+        free(current);
+
+        return;
+    } 
+
+    while(isDiff(current->value, value) && isNotEmpty(current->next)) {
+        current = current->next;
+    }
+
+    if(isDiff(current->value, value)) {
+        return;
+    }
+
+    posterior = current->next;
+    previous = current->prev;
+
+    if(isEmpty(posterior)) {
+        previous->next = NULL;
+    }
+    else if (isNotEmpty(posterior)) {
+        posterior->prev = previous;   
+        previous->next = posterior;
+    }
+
+    free(current);
+}
