@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ERR_EMPTY_LIST -1
 #define TRUE 1
 #define FALSE 0
 
@@ -72,4 +73,26 @@ Node * back(Node *head) {
     }
 
     return head;
+}
+
+// Returns the value of the nth item.
+// Time complexity: O(n)
+int valueAt(int position, Node *head) {
+    if(isEmpty(head)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    Node *iterator = head;
+    int currPos = 1;
+
+    while(isDiff(currPos, position) && isNotEmpty(iterator->next)) {
+        ++currPos;
+        iterator = iterator->next;
+    }
+
+    if(isDiff(currPos, position)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    return iterator->value;
 }
