@@ -31,3 +31,21 @@ int isEmpty(Node *node) {
 int isNotEmpty(Node *node) {
     return (node != NULL) ? TRUE : FALSE;
 }
+
+// Returns number of data elements in list.
+// Time complexity: O(n)
+int size(Node *head) {
+    Node *iterator = head;
+    int size = 0;
+
+    if(isEmpty(head)) {
+        return size;
+    }
+
+    while(isNotEmpty(iterator)) {
+        ++size;
+        iterator = iterator->next;
+    }
+
+    return size;
+}
