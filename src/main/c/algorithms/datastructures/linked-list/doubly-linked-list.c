@@ -153,3 +153,21 @@ void appendFront(int value, Node **head) {
 
     helper->prev = node;
 }
+
+// Inserts an item at the end of the list.
+// Time complexity: O(n)
+void appendBack(int value, Node **head) {
+    Node *node = createNode(value);
+
+    if(isEmpty(*head)) {
+        *head = node;
+
+        return;
+    }
+
+    Node *tail = back(*head);
+
+    tail->next = node;
+
+    node->prev = tail;
+}
