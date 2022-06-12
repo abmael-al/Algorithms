@@ -6,3 +6,13 @@ typedef struct Node {
     struct Node *next;
     struct Node *prev;
 } Node;
+
+Node * createNode(int value) {
+    Node *node = (Node *)malloc(sizeof(Node));
+
+    node->value = value;
+    node->next = NULL;
+    node->prev = NULL;
+
+    return node;
+}
