@@ -115,7 +115,7 @@ void printForward(Node *head) {
     printf("\n\n-------------------------------------------\n");
 }
 
-// Print a doubly linked list in forward order
+// Print a doubly linked list in backward order.
 // Time complexity: O(n)
 void printBackward(Node *head) {
     if(isEmpty(head)) {
