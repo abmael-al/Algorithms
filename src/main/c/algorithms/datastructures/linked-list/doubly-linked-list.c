@@ -96,3 +96,21 @@ int valueAt(int position, Node *head) {
 
     return iterator->value;
 }
+
+// Print in forward order.
+// Time complexity: O(n)
+void printForward(Node *head) {
+    if(isEmpty(head)) {
+        return;
+    }
+    
+    printf("\n------------ LIST VIEW: FORWARD ------------\n\n");
+
+    while (isNotEmpty(head)) {
+        printf("%d ", head->value);
+
+        head = head->next;
+    }
+    
+    printf("\n\n-------------------------------------------\n");
+}
