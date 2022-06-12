@@ -27,3 +27,7 @@ int isDiff(int n1, int n2) {
 int isEmpty(Node *node) {
     return (node == NULL) ? TRUE : FALSE;
 }
+
+int isNotEmpty(Node *node) {
+    return (node != NULL) ? TRUE : FALSE;
+}
