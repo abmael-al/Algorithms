@@ -8,7 +8,7 @@ typedef struct Node {
     struct Node* right;
 } Node;
 
-Node* search(Node* root, int value) {
+Node* binarySearch(Node* root, int value) {
     if(root == NULL) {
         return NULL;
     }
