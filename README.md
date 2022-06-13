@@ -11,3 +11,8 @@
 
 ## Sort Algorithms
 - [Insertion Sort](./src/main/c/algorithms/sort/insertion-sort.c) **- O(n<sup>2</sup>)**
+
+## Interview Questions
+#### Linked-list
+- [Reverse a linked list iterativelty](./src/main/c/algorithms/interview-questions/linked-list/reverse-linked-list-iterative-method.c) **- O(n)**
+- [Reverse a linked list recursively](./src/main/c/algorithms/interview-questions/linked-list/reverse-linked-list-recursive-method.c) **- O(n) both space and time complexity**
