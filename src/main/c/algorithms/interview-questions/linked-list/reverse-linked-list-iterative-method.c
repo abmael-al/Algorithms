@@ -10,3 +10,7 @@ typedef struct Node {
     int value;
     struct Node* next;
 } Node;
+
+int isEmpty(Node * node) {
+    return (node == NULL) ? TRUE : FALSE;
+}
