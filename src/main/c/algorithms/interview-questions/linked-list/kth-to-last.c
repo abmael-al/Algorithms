@@ -43,3 +43,20 @@ void print(Node* head) {
 
     printf("\n");
 }
+
+void walk(int steps, Node **node) {
+    int i;
+    int isOutOfBounds;
+
+    for(i = 0; i < steps; i++) {
+        isOutOfBounds = isEmpty((*node)->next);
+
+        if(isOutOfBounds) {
+            *node = NULL;
+
+            return;
+        }
+
+        *node = (*node)->next;
+    }
+}
