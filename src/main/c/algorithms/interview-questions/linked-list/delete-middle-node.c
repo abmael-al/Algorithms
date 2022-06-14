@@ -100,3 +100,26 @@ void deleteMiddleNode(Node **head) {
 
     free(middle); 
 }
+
+int main() {
+    Node *head = NULL;
+
+    push(1, &head);
+    push(2, &head);
+    push(3, &head);
+    push(4, &head);
+    push(5, &head);
+    push(6, &head);
+    push(7, &head);
+    push(8, &head);
+    push(9, &head);
+    
+    print(head);
+
+    deleteMiddleNode(&head);
+
+    printf("\n--- Middle node deleted ---\n");
+    print(head);
+
+    return 0;
+}
