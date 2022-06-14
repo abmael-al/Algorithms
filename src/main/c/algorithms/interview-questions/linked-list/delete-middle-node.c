@@ -53,3 +53,50 @@ void print(Node* head) {
 
     printf("\n");
 }
+
+void deleteMiddleNode(Node **head) {
+    if(isEmpty(*head)) {
+        return;
+    }
+
+    int hasReachedMiddle;
+
+    Node* fast = (*head)->next;
+    Node* slow = *head;
+    Node* behindSlow = NULL;
+
+    while(1) {
+        hasReachedMiddle = isEmpty(fast);
+
+        if(hasReachedMiddle) {
+            break;
+        }
+        
+        if(isEmpty(fast->next)) {
+            fast = fast->next;
+        }
+
+        else if(!isEmpty(fast->next)) {
+            fast = fast->next->next;
+        }
+
+        behindSlow = slow;
+        slow = slow->next;
+    }
+
+    int isTheOnlyNodeInTheList = isEmpty(behindSlow);
+    
+    if(isTheOnlyNodeInTheList) {
+        *head = NULL;
+
+        free(slow);
+
+        return;
+    }
+
+    Node* middle = slow;
+
+    behindSlow->next = middle->next;
+
+    free(middle); 
+}
