@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ERR_EMPTY_LIST -1;
+#define ERR_OUT_OF_BOUNDS ERR_EMPTY_LIST;
+
 typedef struct Node {
     int value;
     struct Node* next;
@@ -59,4 +62,26 @@ void walk(int steps, Node **node) {
 
         *node = (*node)->next;
     }
+}
+
+int kthToLast(int k, Node *head) {
+    if(isEmpty(head)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    Node* behind = head;
+    Node* ahead = head;
+
+    walk(k - 1, &ahead);
+
+    if(isEmpty(ahead)) {
+        return ERR_OUT_OF_BOUNDS;
+    }
+
+    while(!isEmpty(ahead->next)) {
+        ahead = ahead->next;
+        behind = behind->next;
+    }
+
+    return behind->value;
 }
