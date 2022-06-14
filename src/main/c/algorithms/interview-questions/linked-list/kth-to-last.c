@@ -4,6 +4,11 @@
 #define ERR_EMPTY_LIST -1;
 #define ERR_OUT_OF_BOUNDS ERR_EMPTY_LIST;
 
+// Return Kth to Last: Implement an algorithm to find 
+// the kth to last element of a singly linked list.
+
+// Source [BOOK]: Cracking the Coding Interview. Chapter 2, page 94.
+
 typedef struct Node {
     int value;
     struct Node* next;
