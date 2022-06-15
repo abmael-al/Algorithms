@@ -80,3 +80,30 @@ int isPalindrome(Node *head) {
 
     return validation;
 }
+
+int main() {
+    Node *palindrome = NULL;
+
+    push(1, &palindrome);
+    push(2, &palindrome);
+    push(2, &palindrome);
+    push(1, &palindrome);
+ 
+    print(palindrome);
+
+    printf("Is palindrome [PALINDROME LIST]: %d\n", isPalindrome(palindrome));
+
+
+    Node* notPalindrome = NULL;
+
+    push(1, &notPalindrome);
+    push(2, &notPalindrome);
+    push(3, &notPalindrome);
+    push(4, &notPalindrome);
+
+    print(notPalindrome);
+
+    printf("Is palindrome [NOT PALINDROME LIST]: %d\n", isPalindrome(notPalindrome));
+
+    return 0;
+}
