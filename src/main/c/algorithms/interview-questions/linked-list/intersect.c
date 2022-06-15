@@ -164,5 +164,7 @@ int main() {
     back(head)->next = head3;
     back(head2)->next = head3;
 
+    printf("\nIntersection: %d", intersect(head, head2)->value);
+
     return 0;
 }
