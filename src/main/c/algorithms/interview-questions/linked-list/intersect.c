@@ -67,3 +67,7 @@ int size(Node *head) {
 
     return size;
 }
+
+int diff(int n1, int n2) {
+    return abs(n1 - n2);
+}
