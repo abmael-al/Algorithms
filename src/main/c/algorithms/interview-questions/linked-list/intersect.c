@@ -71,3 +71,20 @@ int size(Node *head) {
 int diff(int n1, int n2) {
     return abs(n1 - n2);
 }
+
+void walk(int steps, Node **node) {
+    int i;
+    int isOutOfBounds;
+
+    for(i = 0; i < steps; i++) {
+        isOutOfBounds = isEmpty((*node)->next);
+
+        if(isOutOfBounds) {
+            *node = NULL;
+
+            return;
+        }
+
+        *node = (*node)->next;
+    }
+}
