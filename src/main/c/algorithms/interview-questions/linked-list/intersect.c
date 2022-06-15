@@ -102,3 +102,26 @@ Node* getPossibleIntersection(Node *head1, Node *head2) {
     return NULL;
 }
 
+Node* intersect(Node* head1, Node* head2) {
+    int sizeHead1 = size(head1);
+    int sizeHead2 = size(head2);
+    int sizesDiff = diff(sizeHead1, sizeHead2);
+
+    Node* greaterList = NULL;
+    Node* smallerList = NULL;
+
+    if(sizeHead1 >= sizeHead2) {
+        greaterList = head1;
+        smallerList = head2;
+    }
+    else if (sizeHead2 > sizeHead1) {
+        greaterList = head2;
+        smallerList = head1;
+    }
+
+    walk(sizesDiff, &greaterList);
+
+    Node* intersectionNode = getPossibleIntersection(greaterList, smallerList);
+
+    return intersectionNode;
+}
