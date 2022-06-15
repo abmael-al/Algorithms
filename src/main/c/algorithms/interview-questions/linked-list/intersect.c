@@ -88,3 +88,17 @@ void walk(int steps, Node **node) {
         *node = (*node)->next;
     }
 }
+
+Node* getPossibleIntersection(Node *head1, Node *head2) {
+    while(!isEmpty(head1) && !isEmpty(head2)) {
+        if(head1->next == head2->next) {
+            return head1->next;
+        }
+
+        head1 = head1->next;
+        head2 = head2->next;
+    }
+
+    return NULL;
+}
+
