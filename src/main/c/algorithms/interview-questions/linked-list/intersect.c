@@ -125,3 +125,44 @@ Node* intersect(Node* head1, Node* head2) {
 
     return intersectionNode;
 }
+
+Node * back(Node *head) {
+    Node *iterator = head;
+
+    if(isEmpty(head)) {
+        return NULL;
+    }
+
+    while(!isEmpty(iterator->next)) {
+        iterator = iterator->next;
+    }
+
+    return iterator;
+}
+
+int main() {
+    Node *head = NULL;
+    Node* head2 = NULL;
+    Node* head3 = NULL;
+
+    push(-3, &head);
+    push(-2, &head);
+    push(-1, &head);
+    push(0, &head);
+    push(1, &head);
+    push(2, &head);
+    push(3, &head);
+
+    push(1, &head2);
+    push(2, &head2);
+    push(3, &head2);
+
+    push(4, &head3);
+    push(5, &head3);
+    push(6, &head3);
+
+    back(head)->next = head3;
+    back(head2)->next = head3;
+
+    return 0;
+}
