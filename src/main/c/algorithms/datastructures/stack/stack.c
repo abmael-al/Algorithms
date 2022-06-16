@@ -20,6 +20,10 @@ int isEmpty(Node *stack) {
 }
 
 int top(Node *stack) {
+    if(isEmpty(stack)) {
+        return;
+    }
+
     return stack->value;
 }
 
