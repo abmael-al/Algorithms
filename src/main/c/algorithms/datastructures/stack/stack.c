@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ERR_EMPTY_LIST -1
+
 typedef struct Node {
     int value;
     struct Node* next;
@@ -21,7 +23,7 @@ int isEmpty(Node *stack) {
 
 int top(Node *stack) {
     if(isEmpty(stack)) {
-        return;
+        return ERR_EMPTY_LIST;
     }
 
     return stack->value;
@@ -43,7 +45,7 @@ void push(int value, Node **stack) {
 
 int pop(Node **stack) {
     if(isEmpty(*stack)) {
-        return -1;
+        return ERR_EMPTY_LIST;
     }
 
     Node *poppedItem = *stack;
