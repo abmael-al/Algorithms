@@ -36,3 +36,23 @@ void push(int value, Node **stack) {
 
     *stack = node;
 }
+
+int pop(Node **stack) {
+    if(isEmpty(*stack)) {
+        return -1;
+    }
+
+    Node *poppedItem = *stack;
+    int poppedValue = poppedItem->value;
+
+    if(isEmpty((*stack)->next)) {
+        *stack = NULL;
+    }
+    else if(!isEmpty((*stack)->next)) {
+        *stack = (*stack)->next;
+    }
+
+    free(poppedItem);
+
+    return poppedValue;
+}
