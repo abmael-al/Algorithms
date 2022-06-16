@@ -81,3 +81,39 @@ Node * loopDetection(Node* head) {
 
     return nodeAtBeginningOfTheLoop;
 }   
+
+Node * back(Node *head) {
+    Node *iterator = head;
+
+    if(isEmpty(head)) {
+        return NULL;
+    }
+
+    while(!isEmpty(iterator->next)) {
+        iterator = iterator->next;
+    }
+
+    return iterator;
+}
+
+int main() {
+    Node *head = NULL;
+
+    push(9, &head);
+    push(8, &head);
+    push(7, &head);
+    push(6, &head);
+    push(5, &head);
+    push(4, &head);
+    push(3, &head);
+    push(2, &head);
+    push(1, &head);
+
+    print(head);
+
+    back(head)->next = head;
+
+    printf("\nLoop detection: %d", loopDetection(head)->value);
+
+    return 0;
+}
