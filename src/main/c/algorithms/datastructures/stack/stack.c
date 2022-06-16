@@ -19,6 +19,10 @@ int isEmpty(Node *stack) {
     return stack == NULL;
 }
 
+int top(Node *stack) {
+    return stack->value;
+}
+
 void push(int value, Node **stack) {
     Node* node = createNode(value);
     
