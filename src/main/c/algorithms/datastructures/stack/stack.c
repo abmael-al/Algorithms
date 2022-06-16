@@ -14,3 +14,7 @@ Node* createNode(int value) {
 
     return node;
 }
+
+int isEmpty(Node *stack) {
+    return stack == NULL;
+}
