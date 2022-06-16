@@ -18,3 +18,17 @@ Node* createNode(int value) {
 int isEmpty(Node *stack) {
     return stack == NULL;
 }
+
+void push(int value, Node **stack) {
+    Node* node = createNode(value);
+    
+    if(isEmpty(*stack)) {
+        *stack = node;
+
+        return;
+    }
+
+    node->next = *stack;
+
+    *stack = node;
+}
