@@ -56,3 +56,28 @@ void print(Node* head) {
 
     printf("\n");
 }
+
+Node * loopDetection(Node* head) {
+    if(isEmpty(head)) {
+        return NULL;
+    }
+
+    Node *nodeAtBeginningOfTheLoop = NULL;
+
+    Node *slow = head;
+
+    Node *fast = head;
+
+    while(slow && fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if(fast == slow) {
+            nodeAtBeginningOfTheLoop = slow;
+
+            break;
+        }
+    }
+
+    return nodeAtBeginningOfTheLoop;
+}   
