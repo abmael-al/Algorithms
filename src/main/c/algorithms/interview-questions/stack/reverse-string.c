@@ -85,3 +85,13 @@ char* reverseString(char string[]) {
 
     return string;
 }
+
+int main() {
+    char string[] = { "Banana" }; 
+    
+    reverseString(string);
+    
+    printf("%s\n", string);
+
+    return 0;
+}
