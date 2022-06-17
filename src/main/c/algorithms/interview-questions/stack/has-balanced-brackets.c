@@ -65,6 +65,24 @@ char pop(Node **stack) {
     return poppedChar;
 }
 
+int isCorrespondentCloseBracket(char open, int close) {
+    return open == '(' && close == ')' 
+        || open == '[' && close == ']'
+        || open == '{' && close == '}';
+}
+
+int isCloseBracket(char chr) {
+    return chr == ')' 
+        || chr == ']' 
+        || chr == '}';
+}
+
+int isOpenBracket(char chr) {
+    return chr == '(' 
+        || chr == '[' 
+        || chr == '{';
+}
+
 void freeStack(Node **stack) {
     Node* helper = NULL;
 
@@ -87,12 +105,6 @@ int handleLoopConclusion(Node **stack) {
     }
 }
 
-int isCorrespondentCloseBracket(char open, int close) {
-    return open == '(' && close == ')' 
-        || open == '[' && close == ']'
-        || open == '{' && close == '}';
-}
-
 int handleCloseBracket(char closeBracket, Node **stack) {
     char openBracket = top(*stack);
 
@@ -106,18 +118,6 @@ int handleCloseBracket(char closeBracket, Node **stack) {
     else if(!isCorrespondentCloseBracket(openBracket, closeBracket)) {
         return NOT_BALANCED;
     }
-}
-
-int isCloseBracket(char chr) {
-    return chr == ')' 
-        || chr == ']' 
-        || chr == '}';
-}
-
-int isOpenBracket(char chr) {
-    return chr == '(' 
-        || chr == '[' 
-        || chr == '{';
 }
 
 int hasBalancedBrackets(char expr[]) {
