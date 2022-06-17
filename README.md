@@ -22,3 +22,6 @@
 - [Implement a function to check if a linked list is a palindrome](./src/main/c/algorithms/interview-questions/linked-list/is-palindrome.c) **- O(n) both space and time complexity**
 - [Given two (singly) linked lists, determine if the two lists intersect](./src/main/c/algorithms/interview-questions/linked-list/intersect.c) **- O(n + m)**
 - [Given a circular linked list, implement an algorithm that returns the node at the beginnig of the loop](./src/main/c/algorithms/interview-questions/linked-list/loop-detection.c) **- O(n)**
+
+#### Stack
+- [Reverse a given string](./src/main/c/algorithms/interview-questions/stack/reverse-string.c)  **- O(n) both space and time complexity**
