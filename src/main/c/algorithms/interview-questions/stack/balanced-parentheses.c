@@ -65,6 +65,15 @@ char pop(Node **stack) {
     return poppedChar;
 }
 
+int handleLoopConclusion(Node *stack) {
+    if(isEmpty(stack)) {
+        return BALANCED;
+    }
+    else if(!isEmpty(stack)) {
+        return NOT_BALANCED;
+    }
+}
+
 int isCorrespondentCloseBracket(char open, int close) {
     return open == '(' && close == ')' 
         || open == '[' && close == ']'
