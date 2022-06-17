@@ -75,3 +75,13 @@ void reconstructString(char str[], Node **stack) {
         pop(stack);
     }
 }
+
+char* reverseString(char string[]) {
+    Node *stack = NULL;
+
+    populateStackWithString(&stack, string);
+
+    reconstructString(string, &stack);
+
+    return string;
+}
