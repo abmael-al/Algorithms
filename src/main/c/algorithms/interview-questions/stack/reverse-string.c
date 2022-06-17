@@ -62,3 +62,9 @@ char pop(Node **stack) {
 
     return poppedChar;
 }
+
+void populateStackWithString(Node **stack, char str[]) {
+    for(int i = 0; str[i]; i++) {
+        push(str[i], stack);
+    }
+}
