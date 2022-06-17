@@ -25,4 +25,4 @@
 
 #### Stack
 - [Reverse a given string](./src/main/c/algorithms/interview-questions/stack/reverse-string.c)  **- O(n) both space and time complexity**
-- [Check if a given expression has balanced brackets](./src/main/c/algorithms/interview-questions/stack/balanced-parentheses.c)  **- O(n)**
+- [Check if a given expression has balanced brackets](./src/main/c/algorithms/interview-questions/stack/has-balanced-brackets.c)  **- O(n)**
