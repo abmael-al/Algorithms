@@ -68,3 +68,10 @@ void populateStackWithString(Node **stack, char str[]) {
         push(str[i], stack);
     }
 }
+
+void reconstructString(char str[], Node **stack) {
+    for(int i = 0; str[i]; i++) {
+        str[i] = top(stack);
+        pop(stack);
+    }
+}
