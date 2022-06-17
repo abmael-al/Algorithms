@@ -64,3 +64,9 @@ char pop(Node **stack) {
 
     return poppedChar;
 }
+
+int isOpenBracket(char chr) {
+    return chr == '(' 
+        || chr == '[' 
+        || chr == '{';
+}
