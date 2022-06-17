@@ -126,3 +126,15 @@ int hasBalancedBrackets(char expr[]) {
 
     return handleLoopConclusion(stack);
 }
+
+int main() {
+    char balancedExpr[] = { "(2+5)*[4+2]+{2}" };
+
+    printf("\nHas balanced brackets: %d", hasBalancedBrackets(balancedExpr));
+
+    char notBalancedExpr[] = { "(2+1*1" };
+    
+    printf("\nHas balanced brackets: %d", hasBalancedBrackets(notBalancedExpr));
+
+    return 0;
+}
