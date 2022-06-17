@@ -80,6 +80,21 @@ int isCorrespondentCloseBracket(char open, int close) {
         || open == '{' && close == '}';
 }
 
+int handleCloseBracket(char closeBracket, Node **stack) {
+    char openBracket = top(*stack);
+
+    if(isEmpty(*stack)) {
+        return NOT_BALANCED;
+    }
+    else if(isCorrespondentCloseBracket(openBracket, closeBracket)) {
+        pop(stack);
+        return BALANCED;
+    }
+    else if(!isCorrespondentCloseBracket(openBracket, closeBracket)) {
+        return NOT_BALANCED;
+    }
+}
+
 int isCloseBracket(char chr) {
     return chr == ')' 
         || chr == ']' 
