@@ -106,3 +106,23 @@ int isOpenBracket(char chr) {
         || chr == '[' 
         || chr == '{';
 }
+
+int hasBalancedBrackets(char expr[]) {
+    Node* stack = NULL;
+
+    int i;
+    for(i = 0; expr[i]; i++) {
+        if(isOpenBracket(expr[i])) {
+            push(expr[i], &stack);
+        }
+        else if(isCloseBracket(expr[i])) {
+            int isStillBalanced = handleCloseBracket(expr[i], &stack);
+
+            if(!isStillBalanced) {
+                return NOT_BALANCED;
+            }
+        }
+    }
+
+    return handleLoopConclusion(stack);
+}
