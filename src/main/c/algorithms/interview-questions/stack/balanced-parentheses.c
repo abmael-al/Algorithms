@@ -65,11 +65,24 @@ char pop(Node **stack) {
     return poppedChar;
 }
 
-int handleLoopConclusion(Node *stack) {
-    if(isEmpty(stack)) {
+void freeStack(Node **stack) {
+    Node* helper = NULL;
+
+    while(!isEmpty(*stack)) {
+        helper = *stack;
+        *stack = (*stack)->next;
+
+        free(helper);
+    }
+}
+
+int handleLoopConclusion(Node **stack) {
+    if(isEmpty(*stack)) {
         return BALANCED;
     }
-    else if(!isEmpty(stack)) {
+    else if(!isEmpty(*stack)) {
+        freeStack(stack);
+
         return NOT_BALANCED;
     }
 }
@@ -124,11 +137,11 @@ int hasBalancedBrackets(char expr[]) {
         }
     }
 
-    return handleLoopConclusion(stack);
+    return handleLoopConclusion(&stack);
 }
 
 int main() {
-    char balancedExpr[] = { "(2+5)*[4+2]+{2}" };
+    char balancedExpr[] = { "(2+5)*[4+2]+(2}" };
 
     printf("\nHas balanced brackets: %d", hasBalancedBrackets(balancedExpr));
 
