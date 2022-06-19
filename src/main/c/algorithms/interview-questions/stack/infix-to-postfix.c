@@ -70,3 +70,9 @@ int isOperator(char chr) {
         || (chr == '+')
         || (chr == '-');
 }
+
+int hasHigherPrecedence(char operator, char operatorComparedAgainst) {
+    return (operator == '/' && operatorComparedAgainst != '*')
+        || (operatorComparedAgainst < operator);
+}
+
