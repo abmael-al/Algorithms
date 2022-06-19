@@ -106,3 +106,12 @@ void infixToPostfix(char expr[]) {
     }
 }
 
+int main() {
+    char expr[] = { "A+B*C" };
+
+    infixToPostfix(expr);
+
+    printf("%s", expr);
+
+    return 0;
+}
