@@ -76,3 +76,33 @@ int hasHigherPrecedence(char operator, char operatorComparedAgainst) {
         || (operatorComparedAgainst < operator);
 }
 
+void infixToPostfix(char expr[]) {
+    Node* stack = NULL;
+    int currentModifiedIndex = -1;
+
+    int i;
+    for(i = 0; expr[i]; i++) {
+        const char token = expr[i];
+
+        if(isalnum(token)) {
+            expr[++currentModifiedIndex] = token;
+        }
+
+        else if(isOperator(token)) {
+            while(!isEmpty(stack) && !hasHigherPrecedence(top(stack), token)) {
+                expr[++currentModifiedIndex] = top(stack);
+
+                pop(&stack);
+            }
+
+            push(token, &stack);
+        }
+    }
+
+    while(!isEmpty(stack)) {
+        expr[++currentModifiedIndex] = top(stack);
+
+        pop(&stack);
+    }
+}
+
