@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#define ERR_EMPTY_STACK -1
+
 typedef struct Node {
     char chr;
     struct Node* next;
@@ -62,7 +64,9 @@ char pop(Node **stack) {
     return poppedChar;
 }
 
-int main() {
-
-    return 0;
+int isOperator(char chr) {
+    return (chr == '*')
+        || (chr == '/')
+        || (chr == '+')
+        || (chr == '-');
 }
