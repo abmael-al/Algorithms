@@ -152,3 +152,13 @@ void infixToPostfix(char expr[]) {
         pop(&stack);
     }
 }
+
+int main() {
+    char expr[] = { "((A+B)*C-D)*E" };
+
+    infixToPostfix(expr);
+
+    printf("\n%s", expr);
+
+    return 0;
+}
