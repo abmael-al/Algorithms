@@ -16,14 +16,14 @@
 ## Interview Questions
 #### Linked-list
 - [Reverse a linked list iterativetly](./src/main/c/algorithms/interview-questions/linked-list/reverse-linked-list-iterative-method.c) **- O(n)**
-- [Reverse a linked list recursively](./src/main/c/algorithms/interview-questions/linked-list/reverse-linked-list-recursive-method.c) **- O(n) both space and time complexity**
+- [Reverse a linked list recursively](./src/main/c/algorithms/interview-questions/linked-list/reverse-linked-list-recursive-method.c) **- O(n) time and space**
 - [Return kth to last element of a linked list](./src/main/c/algorithms/interview-questions/linked-list/kth-to-last.c) **- O(n)**
 - [Delete the middle node of a linked list](./src/main/c/algorithms/interview-questions/linked-list/delete-middle-node.c) **- O(n)** 
-- [Implement a function to check if a linked list is a palindrome](./src/main/c/algorithms/interview-questions/linked-list/is-palindrome.c) **- O(n) both space and time complexity**
+- [Implement a function to check if a linked list is a palindrome](./src/main/c/algorithms/interview-questions/linked-list/is-palindrome.c) **- O(n) time and space**
 - [Given two (singly) linked lists, determine if the two lists intersect](./src/main/c/algorithms/interview-questions/linked-list/intersect.c) **- O(n + m)**
 - [Given a circular linked list, implement an algorithm that returns the node at the beginnig of the loop](./src/main/c/algorithms/interview-questions/linked-list/loop-detection.c) **- O(n)**
 
 #### Stack
-- [Reverse a given string](./src/main/c/algorithms/interview-questions/stack/reverse-string.c)  **- O(n) both space and time complexity**
-- [Check if a given expression has balanced brackets](./src/main/c/algorithms/interview-questions/stack/has-balanced-brackets.c)  **- O(n) both space and time complexity**
-- [Convert infix expression to postfix](./src/main/c/algorithms/interview-questions/stack/infix-to-postfix.c)  **- O(n) both space and time complexity**
+- [Reverse a given string](./src/main/c/algorithms/interview-questions/stack/reverse-string.c)  **- O(n) time and space**
+- [Check if a given expression has balanced brackets](./src/main/c/algorithms/interview-questions/stack/has-balanced-brackets.c)  **- O(n) time and space**
+- [Convert infix expression to postfix](./src/main/c/algorithms/interview-questions/stack/infix-to-postfix.c)  **- O(n) time and space**
