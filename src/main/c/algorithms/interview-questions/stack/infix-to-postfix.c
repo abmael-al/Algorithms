@@ -89,3 +89,14 @@ int isCloseBracket(char chr) {
         || chr == '}';
 }
 
+void removeCharAt(int index, char str[]) {
+    int len = strlen(str);
+
+    int current;
+    for(current = index; current < len; current++) {
+        const int posterior = current + 1;
+
+        str[current] = str[posterior];
+    }
+}
+
