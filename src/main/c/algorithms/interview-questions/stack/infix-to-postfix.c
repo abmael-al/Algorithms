@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 #define ERR_EMPTY_STACK -1
 
@@ -71,47 +72,14 @@ int isOperator(char chr) {
         || (chr == '-');
 }
 
-int hasHigherPrecedence(char operator, char operatorComparedAgainst) {
+int hasHigherPrecedence(char operatorComparedAgainst, char operator) {
     return (operator == '/' && operatorComparedAgainst != '*')
         || (operatorComparedAgainst < operator);
 }
 
-void infixToPostfix(char expr[]) {
-    Node* stack = NULL;
-    int currentModifiedIndex = -1;
-
-    int i;
-    for(i = 0; expr[i]; i++) {
-        const char token = expr[i];
-
-        if(isalnum(token)) {
-            expr[++currentModifiedIndex] = token;
-        }
-
-        else if(isOperator(token)) {
-            while(!isEmpty(stack) && !hasHigherPrecedence(top(stack), token)) {
-                expr[++currentModifiedIndex] = top(stack);
-
-                pop(&stack);
-            }
-
-            push(token, &stack);
-        }
-    }
-
-    while(!isEmpty(stack)) {
-        expr[++currentModifiedIndex] = top(stack);
-
-        pop(&stack);
-    }
+int isOpenBracket(char chr) {
+    return chr == '(' 
+        || chr == '[' 
+        || chr == '{';
 }
 
-int main() {
-    char expr[] = { "A+B*C" };
-
-    infixToPostfix(expr);
-
-    printf("%s", expr);
-
-    return 0;
-}
