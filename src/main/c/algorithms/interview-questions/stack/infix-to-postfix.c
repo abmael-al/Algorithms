@@ -100,3 +100,55 @@ void removeCharAt(int index, char str[]) {
     }
 }
 
+void infixToPostfix(char expr[]) {
+    Node* stack = NULL;
+    int currentModifiedIndex = -1;
+
+    int i;
+    for(i = 0; expr[i]; i++) {
+        const char token = expr[i];
+
+        if(isalnum(token)) {
+            expr[++currentModifiedIndex] = token;
+        }
+
+        else if(isOperator(token)) {
+            while(!isEmpty(stack) 
+                && !hasHigherPrecedence(top(stack), token)
+                && !isOpenBracket(top(stack))) {
+                
+                expr[++currentModifiedIndex] = top(stack);
+
+                pop(&stack);
+            }
+
+            push(token, &stack);
+        }
+
+        else if (isOpenBracket(token)) {
+            push(token, &stack);
+
+            removeCharAt(i, expr);
+            --i;
+        }
+
+        else if(isCloseBracket(token)) {
+            while(!isEmpty(stack) && !isOpenBracket(top(stack))) {
+                expr[++currentModifiedIndex] = top(stack);
+
+                pop(&stack);
+            }
+
+            pop(&stack);
+
+            removeCharAt(i, expr);
+            --i;
+        }
+    }
+
+    while(!isEmpty(stack)) {
+        expr[++currentModifiedIndex] = top(stack);
+
+        pop(&stack);
+    }
+}
