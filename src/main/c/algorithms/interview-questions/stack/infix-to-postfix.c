@@ -83,3 +83,9 @@ int isOpenBracket(char chr) {
         || chr == '{';
 }
 
+int isCloseBracket(char chr) {
+    return chr == ')' 
+        || chr == ']' 
+        || chr == '}';
+}
+
