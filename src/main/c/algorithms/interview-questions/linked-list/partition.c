@@ -75,3 +75,38 @@ Node * find(int value, Node *head) {
 
     return (firstInstance) ? firstInstance : NULL;
 }
+
+void partition(int value, Node **head) {
+    if(isEmpty(*head)) {
+        return;
+    }
+    
+    Node *tail = *head;
+    Node *current = *head;
+    Node *thisValueExistsInTheList = find(value, *head);
+
+    if(!thisValueExistsInTheList) {
+        return;
+    }        
+
+    while(!isEmpty(current)) {
+        Node *next = current->next;
+        int isLessThanGivenValue = current->value < value; 
+        int isGreaterThanGivenValue = current->value >= value;
+
+        if(isLessThanGivenValue) {
+            current->next = *head;
+            
+            *head = current;
+        }
+        else if(isGreaterThanGivenValue) {
+            tail->next = current;
+            
+            tail = current;
+        }
+
+        current = next;
+    }
+
+    tail->next = NULL;
+}
