@@ -110,3 +110,38 @@ void partition(int value, Node **head) {
 
     tail->next = NULL;
 }
+
+int main(){
+    Node *head = NULL;
+
+    push(1, &head);
+    push(3, &head);
+    push(9, &head);
+    push(5, &head);
+    push(2, &head);
+    push(8, &head);
+    push(1, &head);
+    push(7, &head);
+    push(4, &head);
+    push(3, &head);
+    push(6, &head);
+    push(1, &head);
+    push(3, &head);
+    push(9, &head);
+    push(5, &head);
+    push(2, &head);
+    push(8, &head);
+    push(1, &head);
+    push(7, &head);
+    push(6, &head);
+    push(4, &head);
+    push(3, &head);
+    
+    print(head);
+
+    partition(6, &head);
+
+    print(head);
+
+    return 0;
+}
