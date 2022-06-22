@@ -55,7 +55,23 @@ void print(Node* head) {
     printf("\n");
 }
 
-int main(){
+Node * find(int value, Node *head) {
+    if(isEmpty(head)) {
+        return NULL;
+    }
 
-    return 0;
+    Node *iterator = head;
+    Node *firstInstance = NULL;
+
+    while(!isEmpty(iterator)) {
+        if(iterator->value == value) {
+            firstInstance = iterator;
+            
+            break;
+        } 
+
+        iterator = iterator->next;
+    }
+
+    return (firstInstance) ? firstInstance : NULL;
 }
