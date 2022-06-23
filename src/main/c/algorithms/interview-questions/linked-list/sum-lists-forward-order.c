@@ -170,3 +170,27 @@ void sum(Node *head1, Node* head2, Node **result) {
         push(carry, result);
     }
 }
+
+int main() {
+    Node *head1 = NULL;
+    Node *head2 = NULL;
+    Node *result = NULL;
+
+    // 7526
+    push(6, &head1);
+    push(2, &head1);
+    push(5, &head1);
+    push(7, &head1);
+
+    // 77777
+    push(7, &head2);
+    push(7, &head2);
+    push(7, &head2);
+    push(7, &head2);
+    push(7, &head2);
+
+    sum(head2, head1, &result);
+
+    // 8 5 3 0 3
+    print(result);
+}
