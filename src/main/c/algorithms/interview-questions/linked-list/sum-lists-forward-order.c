@@ -95,3 +95,19 @@ void swap(Node **head1, Node **head2) {
 int diff(int n1, int n2) {
     return abs(n1 - n2);
 }
+
+void addSameSize(Node *head1, Node *head2, Node **result, int *carry) {
+    if(isEmpty(head1)) {
+        return;
+    }
+
+    int sum;
+
+    addSameSize(head1->next, head2->next, result, carry);
+    
+    sum = (head1->value + head2->value + *carry);
+    *carry = sum / 10;
+    sum = sum % 10;
+
+    push(sum, result);
+}
