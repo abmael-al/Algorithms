@@ -5,3 +5,53 @@
 // EXAMPLE
 // lnput:(6 -> 1 -> 7) + (2 -> 9 -> 5).That is,617 + 295.
 // Output: 9 -> 1 -> 2. That is, 912. 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    int value;
+    struct Node* next;
+} Node;
+
+Node* createNode(int value) {
+    Node* node = (Node*)malloc(sizeof(Node));
+
+    node->value = value;
+    node->next = NULL;
+
+    return node;
+}
+
+int isEmpty(Node* node) {
+    return node == NULL;
+}
+
+void push(int value, Node **head) {
+    Node* node = createNode(value);
+
+    if(isEmpty(*head)) {
+        *head = node;
+
+        return;
+    }
+
+    node->next = *head;
+    
+    *head = node;
+}
+
+void print(Node* head) {
+    printf("\n");
+
+    while(head) {
+        printf("%d ", head->value);
+        head = head->next;
+    }
+
+    printf("\n");
+}
+
+int main() {
+
+}
