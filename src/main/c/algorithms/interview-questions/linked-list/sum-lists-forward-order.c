@@ -68,3 +68,18 @@ int size(Node *head) {
 
     return size;
 }
+
+void walk(int steps, Node **node) {
+    if(isEmpty(*node)) {
+        return;
+    }
+
+    int i;
+    for(i = 0; i < steps; i++) {
+        if(isEmpty(*node)) {
+            return;
+        }
+
+        *node = (*node)->next;
+    }
+}
