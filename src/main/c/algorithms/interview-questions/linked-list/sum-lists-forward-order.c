@@ -83,3 +83,11 @@ void walk(int steps, Node **node) {
         *node = (*node)->next;
     }
 }
+
+void swap(Node **head1, Node **head2) {
+    Node *helper = *head1;
+
+    *head1 = *head2;
+
+    *head2 = helper;
+}
