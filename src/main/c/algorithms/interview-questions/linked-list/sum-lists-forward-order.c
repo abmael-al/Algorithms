@@ -52,6 +52,19 @@ void print(Node* head) {
     printf("\n");
 }
 
-int main() {
+int size(Node *head) {
+    int size = 0;
+    Node *iterator = head;
 
+    if(isEmpty(head)) {
+        return size;
+    }
+
+    while(!isEmpty(iterator)) {
+        ++size;
+
+        iterator = iterator->next;
+    }
+
+    return size;
 }
