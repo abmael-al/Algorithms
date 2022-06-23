@@ -91,3 +91,7 @@ void swap(Node **head1, Node **head2) {
 
     *head2 = helper;
 }
+
+int diff(int n1, int n2) {
+    return abs(n1 - n2);
+}
