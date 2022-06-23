@@ -111,3 +111,22 @@ void addSameSize(Node *head1, Node *head2, Node **result, int *carry) {
 
     push(sum, result);
 }
+
+void addCarryToRemaining(Node *head, Node *current, Node **result, int *carry) {
+    if(isEmpty(head)) {
+        return;
+    }
+
+    int sum;
+
+    if(head != current) {
+        addCarryToRemaining(head->next, current, result, carry);
+
+        sum = (head->value + *carry);
+        
+        *carry = sum / 10;
+        sum = sum % 10;
+
+        push(sum, result);
+    }
+}
