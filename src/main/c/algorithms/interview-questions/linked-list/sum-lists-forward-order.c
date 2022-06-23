@@ -130,3 +130,43 @@ void addCarryToRemaining(Node *head, Node *current, Node **result, int *carry) {
         push(sum, result);
     }
 }
+
+void sum(Node *head1, Node* head2, Node **result) {
+    if(isEmpty(head1)) {
+        *result = head2;
+
+        return;
+    }
+    else if(isEmpty(head2)) {
+        *result = head1;
+
+        return;
+    }
+
+    Node *current = NULL;
+    int sizeHead1 = size(head1);
+    int sizeHead2 = size(head2);
+    int carry = 0;
+
+    if(sizeHead1 == sizeHead2) {
+        addSameSize(head1, head2, result, &carry);
+    }
+    else {
+        int szDiff = diff(sizeHead1, sizeHead2);
+    
+        if(sizeHead1 < sizeHead2) {
+            swap(&head1, &head2);
+        }
+
+        current = head1;
+        walk(szDiff, &current);
+
+        addSameSize(current, head2, result, &carry);
+
+        addCarryToRemaining(head1, current, result, &carry);
+    }
+
+    if(carry) {
+        push(carry, result);
+    }
+}
