@@ -98,3 +98,27 @@ Node * sum(Node *head1, Node *head2) {
 
     return result;
 }
+
+int main() {
+    Node *head1 = NULL;
+    Node *head2 = NULL;
+    
+    // 823
+    appendBack(3, &head1);
+    appendBack(2, &head1);
+    appendBack(8, &head1);
+
+    // 23471
+    appendBack(1, &head2);
+    appendBack(7, &head2);
+    appendBack(4, &head2);
+    appendBack(3, &head2);
+    appendBack(2, &head2);
+
+    Node *result = sum(head1, head2);
+
+    // 4 9 2 4 2 --> 24294
+    print(result);
+
+    return 0;
+}
