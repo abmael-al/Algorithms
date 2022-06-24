@@ -57,3 +57,44 @@ void print(Node* head) {
 
     printf("\n");
 }
+
+Node * sum(Node *head1, Node *head2) {
+    if(isEmpty(head1)) {
+        return head2;
+    }
+    else if(isEmpty(head2)) {
+        return head1;
+    }
+
+    Node *result = NULL;
+    int carry = 0;
+
+    while(!isEmpty(head1) && !isEmpty(head2)) {
+        int sum = head1->value + head2->value + carry;
+        carry = sum / 10;
+        sum = sum % 10;
+
+        appendBack(sum, &result);
+
+        head1 = head1->next;
+        head2 = head2->next;
+    }
+
+    Node *remainder = (isEmpty(head1)) ? head2 : head1;
+    
+    while(!isEmpty(remainder)) {
+        int sum = remainder->value + carry;
+        carry = sum / 10;
+        sum = sum % 10;
+
+        appendBack(sum, &result);
+
+        remainder = remainder->next;
+    }
+
+    if(carry) {
+        appendBack(carry, &result);
+    }
+
+    return result;
+}
