@@ -23,7 +23,8 @@
 - [Given two (singly) linked lists, determine if the two lists intersect](./src/main/c/algorithms/interview-questions/linked-list/intersect.c) **- O(n + m)**
 - [Given a circular linked list, implement an algorithm that returns the node at the beginnig of the loop](./src/main/c/algorithms/interview-questions/linked-list/loop-detection.c) **- O(n)**
 - [Partition a linked list around a value x](./src/main/c/algorithms/interview-questions/linked-list/partition.c) **- O(n)**
-- [Sum two numbers that are represented, in forward order, by linked lists](./src/main/c/algorithms/interview-questions/linked-list/sum-lists-forward-order.c) **- O(n + m) time and space**
+- [Sum two linked lists that represent two numbers in foward order](./src/main/c/algorithms/interview-questions/linked-list/sum-lists-forward-order.c) **- O(n + m) time and space**
+- [Sum two linked lists that represent two numbers in reverse order](./src/main/c/algorithms/interview-questions/linked-list/sum-lists-reverse-order.c) **- O(n + m)**
 
 #### Stack
 - [Reverse a given string](./src/main/c/algorithms/interview-questions/stack/reverse-string.c)  **- O(n) time and space**
