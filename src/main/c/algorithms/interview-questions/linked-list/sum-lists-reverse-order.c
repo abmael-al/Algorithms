@@ -6,6 +6,8 @@
 // Input: (7-> 1 -> 6) + (5 -> 9 -> 2). That is, 617 + 295.
 // Output: 2 -> 1 -> 9. That is, 912. 
 
+// Source [BOOK]: Cracking the Coding Interview. Chapter 2, page 95.
+
 #include <stdio.h>
 #include <stdlib.h>
 
