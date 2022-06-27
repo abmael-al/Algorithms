@@ -119,3 +119,17 @@ int popFromCurrentStack(SetOfStacks *set) {
     return poppedValue;
 
 }
+
+int pop(SetOfStacks *set) {
+    if(isEmpty(set)) {
+        return ERR_EMPTY_SET_OF_STACKS;
+    }
+
+    int poppedValue = popFromCurrentStack(set);
+    
+    if(isCurrentStackEmpty(set)) {
+        freeCurrentStack(set);
+    }
+
+    return poppedValue;
+}
