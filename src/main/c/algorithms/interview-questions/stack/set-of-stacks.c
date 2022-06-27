@@ -48,3 +48,7 @@ Stack * getCurrentStack(SetOfStacks set) {
 
     return set.stacks[current];
 }
+
+void incrementCurrent(SetOfStacks *set) {
+    ++set->current;
+}
