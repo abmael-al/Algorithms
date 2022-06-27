@@ -66,3 +66,10 @@ void pushAtCurrentStack(int value, SetOfStacks *set) {
 
     currentStack->arr[++currentStack->top] = value;
 }
+
+int isCurrentStackEmpty(SetOfStacks *set) {
+    int current = set->current;
+    Stack *currentStack = set->stacks[current];
+
+    return currentStack->top == EMPTY_STACK; 
+}
