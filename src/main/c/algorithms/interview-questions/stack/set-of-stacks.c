@@ -9,6 +9,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX_NUMBER_OF_STACKS 10
+#define ERR_EMPTY_SET_OF_STACKS -1
+#define NO_STACK_AVAILABLE -1
+#define EMPTY_STACK -1
+
 typedef struct Stack {
     int *arr;
     int top;
@@ -19,3 +24,12 @@ typedef struct SetOfStacks {
     int current;
     int maxHeightForEachStack;
 } SetOfStacks;
+
+Stack * createStack(int capacity) {
+    Stack *stack = (Stack *)malloc(sizeof(Stack));
+
+    stack->arr = (int *)calloc(capacity, sizeof(int));
+    stack->top = -1;
+
+    return stack;
+}
