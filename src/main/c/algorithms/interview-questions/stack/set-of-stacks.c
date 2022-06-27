@@ -42,3 +42,9 @@ void initSetOfStacks(SetOfStacks *set, int maxHeightForEachStack) {
 int getCurrent(SetOfStacks set) {
     return set.current;
 }
+
+Stack * getCurrentStack(SetOfStacks set) {
+    int current = getCurrent(set);
+
+    return set.stacks[current];
+}
