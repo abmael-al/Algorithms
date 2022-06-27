@@ -101,3 +101,11 @@ void push(int value, SetOfStacks *set) {
 
     pushAtCurrentStack(value, set);
 }
+
+int freeCurrentStack(SetOfStacks *set) {
+    Stack *currentStack = getCurrentStack(*set);
+   
+    set->stacks[set->current--] = NULL;
+   
+    free(currentStack);
+}
