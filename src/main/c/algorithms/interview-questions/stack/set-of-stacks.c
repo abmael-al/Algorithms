@@ -38,3 +38,7 @@ void initSetOfStacks(SetOfStacks *set, int maxHeightForEachStack) {
     set->current = NO_STACK_AVAILABLE;
     set->maxHeightForEachStack = maxHeightForEachStack;
 }
+
+int getCurrent(SetOfStacks set) {
+    return set.current;
+}
