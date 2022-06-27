@@ -60,3 +60,9 @@ void allocateNewStackAtNextAvailableIndex(SetOfStacks *set) {
     
     set->stacks[current] = createStack(set->maxHeightForEachStack);
 }
+
+void pushAtCurrentStack(int value, SetOfStacks *set) {
+    Stack *currentStack = getCurrentStack(*set);
+
+    currentStack->arr[++currentStack->top] = value;
+}
