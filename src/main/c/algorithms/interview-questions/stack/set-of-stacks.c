@@ -109,3 +109,13 @@ int freeCurrentStack(SetOfStacks *set) {
    
     free(currentStack);
 }
+
+int popFromCurrentStack(SetOfStacks *set) {
+    Stack *currentStack = getCurrentStack(*set);
+    int poppedValue = currentStack->arr[currentStack->top];
+
+    --currentStack->top;
+
+    return poppedValue;
+
+}
