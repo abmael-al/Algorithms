@@ -33,3 +33,8 @@ Stack * createStack(int capacity) {
 
     return stack;
 }
+
+void initSetOfStacks(SetOfStacks *set, int maxHeightForEachStack) {
+    set->current = NO_STACK_AVAILABLE;
+    set->maxHeightForEachStack = maxHeightForEachStack;
+}
