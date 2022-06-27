@@ -13,3 +13,9 @@ typedef struct Stack {
     int *arr;
     int top;
 } Stack;
+
+typedef struct SetOfStacks {
+    Stack *stacks[MAX_NUMBER_OF_STACKS];
+    int current;
+    int maxHeightForEachStack;
+} SetOfStacks;
