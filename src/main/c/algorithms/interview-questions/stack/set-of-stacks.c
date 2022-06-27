@@ -52,3 +52,11 @@ Stack * getCurrentStack(SetOfStacks set) {
 void incrementCurrent(SetOfStacks *set) {
     ++set->current;
 }
+
+void allocateNewStackAtNextAvailableIndex(SetOfStacks *set) {
+    incrementCurrent(set);
+    
+    int current = getCurrent(*set);
+    
+    set->stacks[current] = createStack(set->maxHeightForEachStack);
+}
