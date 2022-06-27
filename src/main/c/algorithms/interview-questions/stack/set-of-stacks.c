@@ -79,3 +79,10 @@ int isEmpty(SetOfStacks *set) {
 
     return current == NO_STACK_AVAILABLE;
 }
+
+int isCurrentStackFull(SetOfStacks *set) {
+    int current = set->current;
+    Stack *currentStack = set->stacks[current];
+
+    return (currentStack->top + 1) == set->maxHeightForEachStack;
+}
