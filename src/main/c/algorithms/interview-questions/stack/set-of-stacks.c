@@ -73,3 +73,9 @@ int isCurrentStackEmpty(SetOfStacks *set) {
 
     return currentStack->top == EMPTY_STACK; 
 }
+
+int isEmpty(SetOfStacks *set) {
+    int current = set->current;
+
+    return current == NO_STACK_AVAILABLE;
+}
