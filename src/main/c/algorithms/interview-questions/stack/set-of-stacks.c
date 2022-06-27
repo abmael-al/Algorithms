@@ -90,3 +90,14 @@ int isCurrentStackFull(SetOfStacks *set) {
 int isFull(SetOfStacks *set) {
     return (set->current + 1) == MAX_NUMBER_OF_STACKS; 
 }
+
+void push(int value, SetOfStacks *set) {
+    if(isFull(set) && isCurrentStackFull(set)) {
+        return;
+    }
+    else if(isEmpty(set) || isCurrentStackFull(set)) {
+        allocateNewStackAtNextAvailableIndex(set);
+    }
+
+    pushAtCurrentStack(value, set);
+}
