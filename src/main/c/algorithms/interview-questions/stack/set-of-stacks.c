@@ -5,3 +5,11 @@
 // SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack
 
 // Source [BOOK]: Cracking the Coding Interview. Chapter 2, page 94.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Stack {
+    int *arr;
+    int top;
+} Stack;
