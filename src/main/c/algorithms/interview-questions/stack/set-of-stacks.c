@@ -86,3 +86,7 @@ int isCurrentStackFull(SetOfStacks *set) {
 
     return (currentStack->top + 1) == set->maxHeightForEachStack;
 }
+
+int isFull(SetOfStacks *set) {
+    return (set->current + 1) == MAX_NUMBER_OF_STACKS; 
+}
