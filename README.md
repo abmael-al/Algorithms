@@ -1,4 +1,10 @@
-# Algorithms & data structures project
+# Algorithms & data structures
+"Having a solid base of algorithmic knowledge and technique is one characteristic that separates the truly skilled programmers from the novices. With modern computing technology, you can accomplish some tasks without knowing much about algorithms, but with a good background in algorithms, you can do much, much more." (Cormen et al. 14)
+
+This repository's goal is to demonstrate how to implement common data structures and algorithms in the C programming language.
+
+## Contributing
+If you'd like to add or improve an algorithm your contribution is welcome!
 
 ## Data Structures
 - [Dynamic Array](./src/main/c/algorithms/datastructures/dynamic-array/dynamic-array.c)	 
