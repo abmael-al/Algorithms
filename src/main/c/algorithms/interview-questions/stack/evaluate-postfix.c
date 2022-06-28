@@ -63,3 +63,10 @@ char pop(Node **stack) {
 
     return poppedChar;
 }
+
+int isOperator(char chr) {
+    return (chr == '*')
+        || (chr == '/')
+        || (chr == '+')
+        || (chr == '-');
+}
