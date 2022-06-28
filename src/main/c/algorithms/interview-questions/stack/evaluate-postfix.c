@@ -70,3 +70,53 @@ int isOperator(char chr) {
         || (chr == '+')
         || (chr == '-');
 }
+
+int handleOperation(char operator, Node **stack) {
+    int result;
+    int operand1 = pop(stack) - '0';
+    int operand2 = pop(stack) - '0';
+            
+    switch (operator) {
+        case '*':
+            result = operand2 * operand1;
+            break;
+                
+        case '/':
+            result = operand2 / operand1;
+            break;
+                
+        case '+':
+            result = operand2 + operand1;
+            break;
+                
+        case '-':
+            result = operand2 - operand1;
+            break;
+    }
+
+    return result;
+}
+
+int evaluatePostfixExpression(char expr[]) {
+    Node *stack = NULL;
+
+    int i;
+    for(i = 0; expr[i]; i++) {
+        const int token = expr[i]; 
+
+        if(isdigit(token)) {
+            push(token, &stack);
+        }
+        else if(isOperator(token)) {
+            int result = handleOperation(token, &stack);
+            
+            push(result, &stack);
+        }     
+    }
+    
+    int result = pop(&stack);
+    
+    free(stack);
+
+    return result;
+}
