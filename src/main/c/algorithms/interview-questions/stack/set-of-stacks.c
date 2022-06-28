@@ -147,3 +147,7 @@ int popStackAt(int index,  SetOfStacks *set) {
 
     return popppedValue;
 }
+
+int isValidIndex(int index, SetOfStacks set) {
+    return (index + 1) <= set.maxHeightForEachStack;
+}
