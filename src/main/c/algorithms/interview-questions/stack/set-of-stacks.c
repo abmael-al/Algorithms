@@ -139,3 +139,11 @@ Stack * getStackAt(int index, SetOfStacks *set) {
 
     return stack;
 }
+
+int popStackAt(int index,  SetOfStacks *set) {
+    Stack *stack = getStackAt(index, set);
+
+    int popppedValue = stack->arr[stack->top--];
+
+    return popppedValue;
+}
