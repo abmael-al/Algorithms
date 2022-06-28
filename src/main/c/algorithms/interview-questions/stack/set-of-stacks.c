@@ -133,3 +133,9 @@ int pop(SetOfStacks *set) {
 
     return poppedValue;
 }
+
+Stack * getStackAt(int index, SetOfStacks *set) {
+    Stack *stack = set->stacks[index];
+
+    return stack;
+}
