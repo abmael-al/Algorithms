@@ -151,3 +151,18 @@ int popStackAt(int index,  SetOfStacks *set) {
 int isValidIndex(int index, SetOfStacks set) {
     return (index + 1) <= set.maxHeightForEachStack;
 }
+
+int popAt(int index, SetOfStacks *set) {
+    if(isEmpty(set)) {
+        return ERR_EMPTY_SET_OF_STACKS;
+    }
+
+    int isValidOperation = isValidIndex(index, *set);
+    int poppedValue = EMPTY_STACK;
+
+    if(isValidOperation) {
+        poppedValue = popStackAt(index, set);
+    }
+
+    return poppedValue;
+}
