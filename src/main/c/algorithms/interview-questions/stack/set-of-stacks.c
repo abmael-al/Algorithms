@@ -10,6 +10,8 @@
 #include <stdlib.h>
 
 #define MAX_NUMBER_OF_STACKS 10
+#define MAX_HEIGHT_FOR_EACH_STACK 3
+
 #define ERR_EMPTY_SET_OF_STACKS -1
 #define NO_STACK_AVAILABLE -1
 #define EMPTY_STACK -1
@@ -165,4 +167,30 @@ int popAt(int index, SetOfStacks *set) {
     }
 
     return poppedValue;
+}
+
+int main() {
+    SetOfStacks set;
+
+    initSetOfStacks(&set, MAX_HEIGHT_FOR_EACH_STACK);
+
+    push(1, &set);
+    push(2, &set);
+    push(3, &set);
+
+    push(4, &set);
+    push(5, &set);
+    push(6, &set);
+
+    push(7, &set);
+    push(8, &set);
+    push(9, &set);
+
+    if(!isEmpty(&set)) {
+        printf("\nNormal pop: %d", pop(&set)); // Returned value: 9
+
+        printf("\nPop at index 1: %d", popAt(1, &set)); // Returned value: 6
+    }
+
+    return 0;
 }
