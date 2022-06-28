@@ -120,3 +120,13 @@ int evaluatePostfixExpression(char expr[]) {
 
     return result;
 }
+
+int main() {
+    char postifxExpr[] = { "98+56-*" };
+
+    int result = evaluatePostfixExpression(postifxExpr);
+
+    printf("\nResult: %d", result); // Result: -17 
+
+    return 0;
+}
