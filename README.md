@@ -37,4 +37,5 @@ If you'd like to add or improve an algorithm your contribution is welcome!
 - [Check if a given expression has balanced brackets](./src/main/c/algorithms/interview-questions/stack/has-balanced-brackets.c)  **- O(n) time and space**
 - [Convert infix expression to postfix](./src/main/c/algorithms/interview-questions/stack/infix-to-postfix.c) **- O(n) time and space**
 - [Evaluate a postfix expression](./src/main/c/algorithms/interview-questions/stack/evaluate-postfix.c)  **- O(n) time and space**
+- [Evaluate a prefix expression](./src/main/c/algorithms/interview-questions/stack/evaluate-prefix.c)  **- O(n) time and space**
 - [Stack of plates](./src/main/c/algorithms/interview-questions/stack/set-of-stacks.c)
