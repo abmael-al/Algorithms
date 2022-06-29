@@ -5,33 +5,33 @@
 #define ERR_EMPTY_STACK -1
 
 typedef struct Node {
-    char chr;
+    int value;
     struct Node* next;
 } Node;
 
-Node* createNode(char chr) {
+Node* createNode(const int value) {
     Node* node = (Node*)malloc(sizeof(Node));
 
-    node->chr = chr;
+    node->value = value;
     node->next = NULL;
 
     return node;
 }
 
-int isEmpty(Node* stack) {
+int isEmpty(const Node* stack) {
     return stack == NULL;
 }
 
-char top(Node *stack) {
+int top(const Node *stack) {
     if(isEmpty(stack)) {
         return ERR_EMPTY_STACK;
     }
 
-    return stack->chr;
+    return stack->value;
 }
 
-void push(char chr, Node **stack) {
-    Node* node = createNode(chr);
+void push(const int value, Node **stack) {
+    Node* node = createNode(value);
 
     if(isEmpty(*stack)) {
         *stack = node;
@@ -44,24 +44,19 @@ void push(char chr, Node **stack) {
     *stack = node;
 }
 
-char pop(Node **stack) {
+int pop(Node **stack) {
     if(isEmpty(*stack)) {
         return ERR_EMPTY_STACK;
     }
 
     Node* poppedNode = *stack;
-    int poppedChar = poppedNode->chr;
+    int poppedValue = poppedNode->value;
 
-    if(isEmpty((*stack)->next)) {
-        *stack = NULL;
-    }
-    else if(!isEmpty((*stack)->next)) {
-        *stack = (*stack)->next;
-    }
+    *stack = (*stack)->next;
 
     free(poppedNode);
 
-    return poppedChar;
+    return poppedValue;
 }
 
 int isOperator(char chr) {
@@ -71,10 +66,10 @@ int isOperator(char chr) {
         || (chr == '-');
 }
 
-int handleOperation(char operator, Node **stack) {
+int handleOperation(const char operator, Node **stack) {
     int result;
-    int operand1 = pop(stack) - '0';
-    int operand2 = pop(stack) - '0';
+    const int operand1 = pop(stack);
+    const int operand2 = pop(stack);
             
     switch (operator) {
         case '*':
@@ -97,7 +92,7 @@ int handleOperation(char operator, Node **stack) {
     return result;
 }
 
-int evaluatePostfixExpression(char expr[]) {
+int evaluatePostfixExpression(const char expr[]) {
     Node *stack = NULL;
 
     int i;
@@ -105,7 +100,9 @@ int evaluatePostfixExpression(char expr[]) {
         const int token = expr[i]; 
 
         if(isdigit(token)) {
-            push(token, &stack);
+            int tokenToInteger = token - '0';
+
+            push(tokenToInteger, &stack);
         }
         else if(isOperator(token)) {
             int result = handleOperation(token, &stack);
@@ -122,7 +119,7 @@ int evaluatePostfixExpression(char expr[]) {
 }
 
 int main() {
-    char postifxExpr[] = { "98+56-*" };
+    const char postifxExpr[] = { "98+56-*" };
 
     int result = evaluatePostfixExpression(postifxExpr);
 
