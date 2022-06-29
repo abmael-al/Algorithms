@@ -120,3 +120,13 @@ int evaluatePrefixExpression(const char expr[]) {
 
     return result;
 }
+
+int main() {
+    const char prefixExpr[] = { "-+*23*549" };
+    
+    int result = evaluatePrefixExpression(prefixExpr);
+
+    printf("\nResult: %d", result); // Result: -17
+
+    return 0;
+}
