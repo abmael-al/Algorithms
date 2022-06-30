@@ -47,3 +47,25 @@ void enqueue(const double value, Queue *queue) {
 
     queue->tail = node;
 }
+
+double dequeue(Queue *queue) {
+    if(isEmpty(*queue)) {
+        return ERR_EMPTY_QUEUE;
+    }
+
+    Node *dequeued = queue->head;
+    Node *next = dequeued->next;
+    const double dequeuedValue = dequeued->value; 
+
+    int isItTheOnlyNodeInTheQueue = queue->tail == queue->head;
+    if(isItTheOnlyNodeInTheQueue) {
+        // In this case, next is going to be equal to NULL
+        queue->tail = next;
+    }
+
+    queue->head = next;
+
+    free(dequeued);
+
+    return dequeuedValue;
+}
