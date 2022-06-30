@@ -56,3 +56,14 @@ int dequeue(Queue *queue) {
 
     return dequeuedElement;
 }
+
+void print(const Queue queue) {
+    int tail = queue.tail;
+    int head = queue.head;
+
+    while(head != tail) {
+        printf("%.f ", queue.queue[head]);
+
+        head = (head + 1) % MAX_SIZE;
+    }
+}
