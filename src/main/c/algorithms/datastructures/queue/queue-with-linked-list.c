@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ERR_EMPTY_QUEUE -1;
+
 typedef struct Node {
     double value;
     struct Node *next;
@@ -27,4 +29,21 @@ int isEmpty(Queue queue) {
 void initQueue(Queue *queue) {
     queue->head = NULL;
     queue->tail = NULL;
+}
+
+void enqueue(const double value, Queue *queue) {
+    Node *node = createNode(value);
+
+    if(isEmpty(*queue)) {
+        queue->head = node;
+        queue->tail = node;
+
+        return;
+    }
+
+    Node *nowSecondToLast = queue->tail; 
+
+    nowSecondToLast->next = node;
+
+    queue->tail = node;
 }
