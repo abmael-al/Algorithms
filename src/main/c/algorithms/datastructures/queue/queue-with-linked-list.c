@@ -69,3 +69,15 @@ double dequeue(Queue *queue) {
 
     return dequeuedValue;
 }
+
+void print(Queue queue) {
+    printf("\n");
+
+    Node *iterator = queue.head;
+    
+    while(iterator) {
+        printf("%.f ", iterator->value);
+        
+        iterator = iterator->next;
+    }
+}
