@@ -67,3 +67,24 @@ void print(const Queue queue) {
         head = (head + 1) % MAX_SIZE;
     }
 }
+
+int main() {
+    Queue queue;
+
+    initQueue(&queue);
+
+    enqueue(1, &queue);
+    enqueue(2, &queue);
+    enqueue(3, &queue);
+    enqueue(4, &queue);
+    enqueue(5, &queue);
+    enqueue(6, &queue);
+    enqueue(7, &queue);
+    enqueue(8, &queue);
+    enqueue(9, &queue);
+    enqueue(10, &queue);
+
+    print(queue);
+
+   return 0; 
+}
