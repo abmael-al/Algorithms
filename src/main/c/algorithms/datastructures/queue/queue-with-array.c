@@ -36,3 +36,23 @@ void enqueue(const double value, Queue *queue) {
     queue->queue[queue->tail] = value;
     queue->tail = (queue->tail + 1) % MAX_SIZE;
 }
+
+int dequeue(Queue *queue) {
+    if(isEmpty(*queue)) {
+        return ERR_EMPTY_QUEUE;
+    }
+    
+    const int dequeuedElement = queue->queue[queue->head];
+
+    int isItTheLastElementInTheQueue = queue->head == queue->tail;
+    
+    if(isItTheLastElementInTheQueue) {
+        queue->head = -1;
+        queue->tail = -1;
+    }
+    else {
+        queue->head = (queue->head + 1) % MAX_SIZE;
+    }
+
+    return dequeuedElement;
+}
