@@ -44,7 +44,7 @@ int dequeue(Queue *queue) {
     
     const int dequeuedElement = queue->queue[queue->head];
 
-    int isItTheLastElementInTheQueue = queue->head == queue->tail;
+    int isItTheLastElementInTheQueue = queue->head == (queue->tail - 1);
     
     if(isItTheLastElementInTheQueue) {
         queue->head = -1;
