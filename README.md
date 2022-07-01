@@ -13,6 +13,7 @@ If you'd like to add or improve an algorithm your contribution is welcome!
 	- [Doubly Linked List](./src/main/c/algorithms/datastructures/linked-list/doubly-linked-list.c)
 - [Queue](./src/main/c/algorithms/datastructures/queue)
 	- [Queue (linked list)](./src/main/c/algorithms/datastructures/queue/queue-with-linked-list.c)
+	- [Queue (array)](./src/main/c/algorithms/datastructures/queue/queue-with-array.c)
 - [Stack](./src/main/c/algorithms/datastructures/stack/stack.c)
 
 ## Search Algorithms
