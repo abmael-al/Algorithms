@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 10
+#define MAX_SIZE 11
 #define ERR_EMPTY_QUEUE -1
 
 typedef struct Queue {
@@ -61,6 +61,7 @@ void print(const Queue queue) {
     int tail = queue.tail;
     int head = queue.head;
 
+    printf("\n");
     while(head != tail) {
         printf("%.f ", queue.queue[head]);
 
@@ -83,8 +84,21 @@ int main() {
     enqueue(8, &queue);
     enqueue(9, &queue);
     enqueue(10, &queue);
-
+   
     print(queue);
+    
+    printf("\nTrying to dequeue from an NOT empty queue: %d", dequeue(&queue));
+
+    dequeue(&queue);
+    dequeue(&queue);
+    dequeue(&queue);
+    dequeue(&queue);
+    dequeue(&queue);
+    dequeue(&queue);
+    dequeue(&queue);
+    dequeue(&queue);
+
+    printf("\nTrying to dequeue from an empty queue: %d", dequeue(&queue));
 
    return 0; 
 }
