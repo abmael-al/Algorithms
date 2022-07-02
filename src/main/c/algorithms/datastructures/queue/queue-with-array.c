@@ -72,35 +72,36 @@ void print(const Queue queue) {
 }
 
 int main() {
-    Queue queue;
+    Queue sampleQueue;
 
-    initQueue(&queue);
+    initQueue(&sampleQueue);
 
-    enqueue(1, &queue);
-    enqueue(2, &queue);
-    enqueue(3, &queue);
-    enqueue(4, &queue);
-    enqueue(5, &queue);
-    enqueue(6, &queue);
-    enqueue(7, &queue);
-    enqueue(8, &queue);
-    enqueue(9, &queue);
-    enqueue(10, &queue);
-   
-    print(queue);
+    enqueue(1, &sampleQueue);
+    enqueue(2, &sampleQueue);
+    enqueue(3, &sampleQueue);
+    enqueue(4, &sampleQueue);
+    enqueue(5, &sampleQueue);
+    enqueue(6, &sampleQueue);
+    enqueue(7, &sampleQueue);
+    enqueue(8, &sampleQueue);
+    enqueue(9, &sampleQueue);
+    enqueue(10, &sampleQueue);
+
+    print(sampleQueue);
     
-    printf("\nTrying to dequeue from an NOT empty queue: %d", dequeue(&queue));
+    printf("\nValue returned from dequeue on the (NOT EMPTY) sample queue: %d", dequeue(&sampleQueue));
 
-    dequeue(&queue);
-    dequeue(&queue);
-    dequeue(&queue);
-    dequeue(&queue);
-    dequeue(&queue);
-    dequeue(&queue);
-    dequeue(&queue);
-    dequeue(&queue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
+    dequeue(&sampleQueue);
 
-    printf("\nTrying to dequeue from an empty queue: %d", dequeue(&queue));
+    printf("\nValue returned from dequeue on the (EMPTY) sample queue: %d [ERR_EMPTY_QUEUE]", dequeue(&sampleQueue));
 
    return 0; 
 }
