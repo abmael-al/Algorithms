@@ -61,12 +61,14 @@ void print(const Queue queue) {
     int tail = queue.tail;
     int head = queue.head;
 
-    printf("\n");
+    printf("\nQueue: ");
     while(head != tail) {
         printf("%.f ", queue.queue[head]);
 
         head = (head + 1) % MAX_SIZE;
     }
+    
+    printf("\n");
 }
 
 int main() {
