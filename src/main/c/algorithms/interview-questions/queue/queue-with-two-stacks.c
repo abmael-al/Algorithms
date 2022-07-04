@@ -108,3 +108,25 @@ void print(const Queue queue) {
  
     printf("\n");
 }
+
+int main() {
+    Queue queue;
+
+    initQueue(&queue);
+
+    enqueue(1, &queue);
+    enqueue(2, &queue);
+    enqueue(3, &queue);
+    enqueue(4, &queue);
+    enqueue(5, &queue);
+
+    dequeue(&queue);
+
+    print(queue);
+
+    enqueue(6, &queue);
+
+    print(queue);
+
+    return 0;
+}
