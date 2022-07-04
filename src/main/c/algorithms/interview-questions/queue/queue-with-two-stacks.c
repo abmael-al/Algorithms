@@ -71,3 +71,11 @@ void initQueue(Queue *queue) {
     queue->enqueue = createStack();
     queue->dequeue = createStack();
 }
+
+void moveAllElementsTo(Stack *destination, Stack *source) {
+    while(source->top) {
+        double value = pop(source);
+
+        push(value, destination);
+    }
+}
