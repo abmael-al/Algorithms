@@ -12,6 +12,11 @@ typedef struct Stack {
     Node *top;
 } Stack;
 
+typedef struct Queue {
+    Stack *enqueue;
+    Stack *dequeue;
+} Queue;
+
 Node *createNode(const double value) {
     Node* node = (Node *)malloc(sizeof(Node));
 
@@ -60,4 +65,9 @@ double pop(Stack *stack) {
     free(poppedNode);
 
     return poppedValue;
+}
+
+void initQueue(Queue *queue) {
+    queue->enqueue = createStack();
+    queue->dequeue = createStack();
 }
