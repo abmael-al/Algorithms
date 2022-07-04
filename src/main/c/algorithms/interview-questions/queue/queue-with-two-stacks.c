@@ -79,3 +79,11 @@ void moveAllElementsTo(Stack *destination, Stack *source) {
         push(value, destination);
     }
 }
+
+void enqueue(const double value, Queue *queue) {
+    if(!isEmpty(*queue->dequeue)) {
+        moveAllElementsTo(queue->enqueue, queue->dequeue);
+    }
+
+    push(value, queue->enqueue);
+}
