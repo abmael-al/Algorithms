@@ -42,3 +42,6 @@ If you'd like to add or improve an algorithm your contribution is welcome!
 - [Evaluate a postfix expression](./src/main/c/algorithms/interview-questions/stack/evaluate-postfix.c)  **- O(n) time and space**
 - [Evaluate a prefix expression](./src/main/c/algorithms/interview-questions/stack/evaluate-prefix.c)  **- O(n) time and space**
 - [Stack of plates](./src/main/c/algorithms/interview-questions/stack/set-of-stacks.c)
+
+#### Queue
+- [Implement a queue with two stacks](./src/main/c/algorithms/interview-questions/queue/queue-with-two-stacks.c)
