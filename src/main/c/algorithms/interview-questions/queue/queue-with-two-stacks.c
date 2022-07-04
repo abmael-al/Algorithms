@@ -87,3 +87,11 @@ void enqueue(const double value, Queue *queue) {
 
     push(value, queue->enqueue);
 }
+
+double dequeue(Queue *queue) {
+    if(!isEmpty(*queue->enqueue)) {
+        moveAllElementsTo(queue->dequeue, queue->enqueue);
+    }
+
+    return pop(queue->dequeue);
+}
