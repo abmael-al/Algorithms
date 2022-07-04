@@ -95,3 +95,16 @@ double dequeue(Queue *queue) {
 
     return pop(queue->dequeue);
 }
+
+void print(const Queue queue) {
+    Node *head = (queue.enqueue->top) ? queue.enqueue->top : queue.dequeue->top;
+    printf("\n");
+ 
+    while(head) {
+        printf("%.f ", head->value);
+    
+        head = head->next;
+    }
+ 
+    printf("\n");
+}
