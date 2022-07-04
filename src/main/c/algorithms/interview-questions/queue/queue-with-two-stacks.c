@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ERR_EMPTY_STACK -1
+
 typedef struct Node {
     double value;
     struct Node *next;
@@ -41,5 +43,21 @@ void push(const double value, Stack *stack) {
     }
 
     node->next = stack->top;
+
     stack->top = node;
+}
+
+double pop(Stack *stack) {
+    if(isEmpty(*stack)) {
+        return ERR_EMPTY_STACK;
+    }
+
+    Node *poppedNode = stack->top;
+    double poppedValue = poppedNode->value;
+
+    stack->top = stack->top->next;
+
+    free(poppedNode);
+
+    return poppedValue;
 }
