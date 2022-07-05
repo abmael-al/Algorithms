@@ -23,7 +23,7 @@ int isDiff(const int n1, const int n2) {
     return n1 != n2;
 }
 
-int isEmpty(const Node * node) {
+int isEmpty(const Node *node) {
     return node == NULL;
 }
 
@@ -55,6 +55,10 @@ Node * front(Node *head) {
 // Time complexity: O(n)
 Node * back(Node *head) {
     Node *iterator = head;
+
+    if(isEmpty(head)) {
+        return NULL;
+    }
 
     while(!isEmpty(iterator->next)) {
         iterator = iterator->next;
