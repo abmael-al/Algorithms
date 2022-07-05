@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define ERR_OUT_OF_RANGE -3
+#define ERR_OUT_OF_RANGE -1
 #define ERR_EMPTY_LIST -1
-#define TRUE 1
-#define FALSE 0
 
 typedef struct Node {
     int value;
@@ -12,7 +10,7 @@ typedef struct Node {
 } Node;
 
 // Create an initialized node.
-Node * createNode(int value) {
+Node * createNode(const int value) {
     Node *node = (Node *)malloc(sizeof(Node));
 
     node->value = value;
@@ -21,20 +19,15 @@ Node * createNode(int value) {
     return node;
 }
 
-int isDiff(int n1, int n2) {
-    return (n1 != n2) ? TRUE : FALSE;
+int isDiff(const int n1, const int n2) {
+    return n1 != n2;
 }
 
-int isEmpty(Node * node) {
-    return (node == NULL) ? TRUE : FALSE;
-}
-
-int isNotEmpty(Node *node) {
-    return (node != NULL) ? TRUE : FALSE;
+int isEmpty(const Node * node) {
+    return node == NULL;
 }
 
 // Returns number of data elements in list.
-// 
 // Time complexity: O(n)
 int size(Node *head) {
     Node *iterator = head;
@@ -44,7 +37,7 @@ int size(Node *head) {
         return size;
     }
 
-    while(isNotEmpty(iterator)){
+    while(!isEmpty(iterator)){
         ++size;
         iterator = iterator->next;
     }
@@ -52,29 +45,18 @@ int size(Node *head) {
     return size;
 }
 
-
 // Returns front node.
-// 
 // Time complexity: O(1)
 Node * front(Node *head) {
-    if(isEmpty(head)) {
-        return NULL;
-    }
-
     return head;
 }
 
 // Returns back node.
-// 
 // Time complexity: O(n)
 Node * back(Node *head) {
     Node *iterator = head;
 
-    if(isEmpty(head)) {
-        return NULL;
-    }
-
-    while(isNotEmpty(iterator->next)) {
+    while(!isEmpty(iterator->next)) {
         iterator = iterator->next;
     }
 
@@ -82,9 +64,8 @@ Node * back(Node *head) {
 }
 
 // Returns the value of the nth item.
-// 
 // Time complexity: O(n)
-int valueAt(int position, Node *head) {
+int valueAt(const int position, Node *head) {
     Node *iterator = head;
     
     if(isEmpty(head)) {
@@ -92,7 +73,7 @@ int valueAt(int position, Node *head) {
     }
 
     int currPosition = 1;
-    while(isDiff(currPosition, position) && isNotEmpty(iterator->next)) {  
+    while(isDiff(currPosition, position) && !isEmpty(iterator->next)) {  
         ++currPosition;
         iterator = iterator->next;
     }
@@ -104,14 +85,10 @@ int valueAt(int position, Node *head) {
     return iterator->value;
 }
 
-void print(Node *head) {
-    if(isEmpty(head)) {
-        return;
-    }
-
+void print(const Node *head) {
     printf("\n");
     
-    while(isNotEmpty(head)) {
+    while(!isEmpty(head)) {
         printf("%d ", head->value);
         
         head = head->next;
@@ -119,9 +96,8 @@ void print(Node *head) {
 }
 
 // Inserts an item to the front of the list.
-// 
 // Time complexity: O(1)
-void appendFront(int value, Node **head) {
+void appendFront(const int value, Node **head) {
     Node *node = createNode(value);
     Node *helper = *head;
 
@@ -132,13 +108,13 @@ void appendFront(int value, Node **head) {
     }
 
     *head = node;
+
     node->next = helper;
 }
 
 // Inserts an item at the end of the list.
-// 
 // Time complexity: O(n)
-void appendBack(int value, Node **head) {
+void appendBack(const int value, Node **head) {
     Node *node = createNode(value);
     Node *tail = back(*head);
 
@@ -153,9 +129,8 @@ void appendBack(int value, Node **head) {
 
 // Insert value at index, so current item at that index.
 // is pointed to by new item at index.
-// 
 // Time complexity: O(n)
-void appendAt(int value, int position, Node **head) {
+void appendAt(const int value, const int position, Node **head) {
     Node *node = createNode(value);
     Node *iterator = *head;
         
@@ -170,8 +145,6 @@ void appendAt(int value, int position, Node **head) {
     
     for(i = 1; i < oneValuePriorToPosition; i++) {
         if(isEmpty(iterator->next)) {
-            printf("\n Position out of range");
-           
             return;
         }
 
@@ -182,17 +155,18 @@ void appendAt(int value, int position, Node **head) {
 
     if(*head == helper) {
         *head = node;
+
         node->next = helper;
 
         return;
     }
 
     iterator->next = node; 
+
     node->next = helper;
 }
 
 // Remove front item and return its value.
-// 
 // Time complexity: O(1)
 int popFront(Node **head) {
     Node *poppedNode = *head;
@@ -242,9 +216,8 @@ int popBack(Node **head) {
 }
 
 // Removes the first item in the list with this value.
-// 
 // Time complexity: O(n)
-void deleteValue(int value, Node **head) {
+void deleteValue(const int value, Node **head) {
     Node *previous = *head;
     Node *current = (*head)->next;
     
@@ -256,6 +229,7 @@ void deleteValue(int value, Node **head) {
     
     if(isFirstValue) {
         Node *helper = *head;
+        
         (*head) = (*head)->next;
         
         free(helper);
@@ -263,8 +237,9 @@ void deleteValue(int value, Node **head) {
         return;
     }
 
-    while(isDiff(current->value, value) && isNotEmpty(current->next)) {
+    while(isDiff(current->value, value) && !isEmpty(current->next)) {
         previous = current;
+
         current = current->next;
     }
 
@@ -278,9 +253,8 @@ void deleteValue(int value, Node **head) {
 }
 
 // Removes node at given index.
-// 
 // Time complexity: O(n)
-void deleteAt(int position, Node **head) {
+void deleteAt(const int position, Node **head) {
     Node *current = *head;
     Node *previous = NULL;
     int currPos = 1;
@@ -297,9 +271,11 @@ void deleteAt(int position, Node **head) {
         return;
     }
 
-    while(isDiff(currPos, position) && isNotEmpty(current->next)) {
+    while(isDiff(currPos, position) && !isEmpty(current->next)) {
         ++currPos;
+
         previous = current;
+
         current = current->next;
     }
 
