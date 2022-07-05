@@ -8,7 +8,7 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-Node* createNode(int value) {
+Node* createNode(const int value) {
     Node* node = (Node*)malloc(sizeof(Node));
 
     node->value = value;
@@ -61,4 +61,24 @@ int pop(Node **stack) {
     free(poppedItem);
 
     return poppedValue;
+}
+
+int main(){
+    Node *stack = NULL;
+
+    push(1, &stack);
+    push(2, &stack);
+    push(3, &stack);
+    push(4, &stack);
+    push(5, &stack);
+
+    printf("\nTop of the stack: %d", top(stack)); // Top of the stack: 5
+
+    pop(&stack);
+    pop(&stack);
+    pop(&stack);
+
+    printf("\nTop of the stack: %d", top(stack)); // Top of the stack: 2
+
+    return 0;
 }
