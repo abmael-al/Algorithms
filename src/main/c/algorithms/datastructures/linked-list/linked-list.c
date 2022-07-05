@@ -291,3 +291,27 @@ void deleteAt(const int position, Node **head) {
     
     free(current);
 }
+
+int main() {
+    Node *head = NULL;
+
+    appendBack(4, &head);
+    appendBack(5, &head);
+    appendBack(6, &head);
+
+    appendFront(3, &head);
+    appendFront(2, &head);
+    appendFront(1, &head);
+
+    print(head); // Linked list: 1 2 3 4 5 6 
+
+    printf("\n\nValue at 3rd position: %d", valueAt(3, head)); // Value at 3rd position: 3
+    
+    printf("\n\nPop back %d", popBack(&head)); // Pop back: 6
+
+    printf("\n\nSize %d\n", size(head)); // Size: 5
+    
+    print(head); // Linked list: 1 2 3 4 5  
+    
+    return 0;
+}
