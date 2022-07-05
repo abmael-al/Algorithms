@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Source [BOOK]: Cracking the Code Interview. Chapter 2, page 94. 
-
-// Delete Middle Node: Implement an algorithm to delete a node in the middle 
-// (i.e., any node butthe first and last node, not necessarily the exact middle) 
-// of a singly linked list, given only access to that node.
-
-// EXAMPLE
-// lnput: the node c from the linked list a->b->c->d->e->f
-// Result: nothing is returned, but the new linked list looks like a->b->d->e->f
-
 typedef struct Node {
     int value;
     struct Node* next;

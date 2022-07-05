@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Implement a function to check if a linked list is a palindrome. 
-
-// Source [BOOK]: Cracking the Coding Interview. Chapter 2, page 94.
-
 #define PALINDROME 1
 #define NOT_PALINDROME 0
 
@@ -96,7 +92,6 @@ int main() {
     print(palindrome);
 
     printf("Is palindrome [PALINDROME LIST]: %d\n", isPalindrome(palindrome));
-
 
     Node* notPalindrome = NULL;
 
