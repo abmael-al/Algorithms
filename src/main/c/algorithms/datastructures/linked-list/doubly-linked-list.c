@@ -2,8 +2,7 @@
 #include <stdlib.h>
 
 #define ERR_EMPTY_LIST -1
-#define TRUE 1
-#define FALSE 0
+#define ERR_OUT_OF_RANGE -2
 
 typedef struct Node {
     int value;
@@ -11,7 +10,7 @@ typedef struct Node {
     struct Node *prev;
 } Node;
 
-Node * createNode(int value) {
+Node * createNode(const int value) {
     Node *node = (Node *)malloc(sizeof(Node));
 
     node->value = value;
@@ -21,16 +20,12 @@ Node * createNode(int value) {
     return node;
 }
 
-int isDiff(int n1, int n2) {
-    return (n1 != n2) ? TRUE : FALSE;
+int isDiff(const int n1, const int n2) {
+    return n1 != n2;
 }
 
-int isEmpty(Node *node) {
-    return (node == NULL) ? TRUE : FALSE;
-}
-
-int isNotEmpty(Node *node) {
-    return (node != NULL) ? TRUE : FALSE;
+int isEmpty(const Node *node) {
+    return node == NULL;
 }
 
 // Returns number of data elements in list.
@@ -43,8 +38,9 @@ int size(Node *head) {
         return size;
     }
 
-    while(isNotEmpty(iterator)) {
+    while(!isEmpty(iterator)) {
         ++size;
+
         iterator = iterator->next;
     }
 
@@ -54,10 +50,6 @@ int size(Node *head) {
 // Returns front node.
 // Time complexity: O(1)
 Node * front(Node *head) {
-    if(isEmpty(head)) {
-        return NULL;
-    }
-
     return head;
 }
 
@@ -68,7 +60,7 @@ Node * back(Node *head) {
         return NULL;
     }
 
-    while(isNotEmpty(head->next)) {
+    while(!isEmpty(head->next)) {
         head = head->next;
     }
 
@@ -85,13 +77,14 @@ int valueAt(int position, Node *head) {
     Node *iterator = head;
     int currPos = 1;
 
-    while(isDiff(currPos, position) && isNotEmpty(iterator->next)) {
+    while(isDiff(currPos, position) && !isEmpty(iterator->next)) {
         ++currPos;
+
         iterator = iterator->next;
     }
 
     if(isDiff(currPos, position)) {
-        return ERR_EMPTY_LIST;
+        return ERR_OUT_OF_RANGE;
     }
 
     return iterator->value;
@@ -100,13 +93,9 @@ int valueAt(int position, Node *head) {
 // Print in forward order.
 // Time complexity: O(n)
 void printForward(Node *head) {
-    if(isEmpty(head)) {
-        return;
-    }
-    
     printf("\n------------ LIST VIEW: FORWARD ------------\n\n");
 
-    while (isNotEmpty(head)) {
+    while (!isEmpty(head)) {
         printf("%d ", head->value);
 
         head = head->next;
@@ -118,15 +107,11 @@ void printForward(Node *head) {
 // Print a doubly linked list in backward order.
 // Time complexity: O(n)
 void printBackward(Node *head) {
-    if(isEmpty(head)) {
-        return;
-    }
-
     Node *iterator = back(head);
 
     printf("\n------------ LIST VIEW: BACKWARD ------------\n\n");
 
-    while(isNotEmpty(iterator)) {
+    while(!isEmpty(iterator)) {
         printf("%d ", iterator->value);
 
         iterator = iterator->prev;
@@ -137,7 +122,7 @@ void printBackward(Node *head) {
 
 // Inserts an item to the front of the list.
 // Time complexity: O(1)
-void appendFront(int value, Node **head) {
+void appendFront(const int value, Node **head) {
     Node *node = createNode(value);
     Node *helper = *head;
     
@@ -156,7 +141,7 @@ void appendFront(int value, Node **head) {
 
 // Inserts an item at the end of the list.
 // Time complexity: O(n)
-void appendBack(int value, Node **head) {
+void appendBack(const int value, Node **head) {
     Node *node = createNode(value);
 
     if(isEmpty(*head)) {
@@ -176,7 +161,7 @@ void appendBack(int value, Node **head) {
 // Insert value at index, so current item at that index.
 // is pointed to by new item at index.
 // Time complexity; O(n)
-void appendAt(int position, int value, Node **head) {
+void appendAt(const int position, const int value, Node **head) {
     Node *node = createNode(value);
     Node *current = *head;
     Node *previous = NULL;
@@ -190,6 +175,7 @@ void appendAt(int position, int value, Node **head) {
 
     if(position == 1) {
         current->prev = node;
+
         node->next = current;
 
         *head = node;
@@ -197,9 +183,11 @@ void appendAt(int position, int value, Node **head) {
         return;
     }
 
-    while(isDiff(currPos, position) && isNotEmpty(current->next)) {
+    while(isDiff(currPos, position) && !isEmpty(current->next)) {
         ++currPos;
+
         previous = current;
+
         current = current->next;
     }
 
@@ -208,6 +196,7 @@ void appendAt(int position, int value, Node **head) {
     }
 
     previous->next = node;
+
     current->prev = node;
 
     node->prev = previous;
@@ -250,7 +239,7 @@ int popBack(Node **head) {
     if(isTheOnlyNodeInTheList) {
         *head = NULL;
     }
-    else if(isNotEmpty(previous)) {
+    else if(!isEmpty(previous)) {
         previous->next = NULL;
     }
 
@@ -261,7 +250,7 @@ int popBack(Node **head) {
 
 // Removes the first item in the list with this value.
 // Time complexity: O(n)
-void deleteValue(int value, Node **head) {
+void deleteValue(const int value, Node **head) {
     if(isEmpty(*head)) {
         return;
     }
@@ -274,6 +263,7 @@ void deleteValue(int value, Node **head) {
     
     if(isTheFirstNode) {
         posterior = current->next;
+
         posterior->prev = NULL;
 
         *head = posterior;
@@ -283,7 +273,7 @@ void deleteValue(int value, Node **head) {
         return;
     } 
 
-    while(isDiff(current->value, value) && isNotEmpty(current->next)) {
+    while(isDiff(current->value, value) && !isEmpty(current->next)) {
         current = current->next;
     }
 
@@ -292,13 +282,15 @@ void deleteValue(int value, Node **head) {
     }
 
     posterior = current->next;
+
     previous = current->prev;
 
     if(isEmpty(posterior)) {
         previous->next = NULL;
     }
-    else if (isNotEmpty(posterior)) {
+    else if (!isEmpty(posterior)) {
         posterior->prev = previous;   
+
         previous->next = posterior;
     }
 
@@ -328,7 +320,7 @@ void deleteAt(int position, Node **head) {
         return;
     }
 
-    while(isDiff(currPos, position) && isNotEmpty(current->next)) {
+    while(isDiff(currPos, position) && !isEmpty(current->next)) {
         ++currPos;
         current = current->next;
     }
@@ -338,13 +330,15 @@ void deleteAt(int position, Node **head) {
     }
 
     posterior = current->next;
+
     previous = current->prev;
 
     if(isEmpty(posterior)) {
         previous->next = NULL;
     }
-    else if(isNotEmpty(posterior)) {
+    else if(!isEmpty(posterior)) {
         posterior->prev = previous;
+
         previous->next = posterior;
     }
 
