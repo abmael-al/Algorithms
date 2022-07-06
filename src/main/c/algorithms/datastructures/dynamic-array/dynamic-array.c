@@ -1,14 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ILLEGAL_CAPACITY NULL
+
 typedef struct Array {
     int *arr;
+    int current;
     size_t size;
-    size_t current;
 } Array;
 
-// Initialize array with given size.
-Array* init(Array *array, size_t size) {
+// Initialize array with a certain capacity.
+Array *InitArray(Array *array, size_t size) {
+    if(size < 0) {
+        return ILLEGAL_CAPACITY;
+    }
+
+    array->arr = (int*)calloc(size, sizeof(int));
+    array->size = size;
+    array->current = 0;
+
+    return array;
+}
+
+Array *CreateArray(size_t size) {
+    if(size < 0) {
+        return ILLEGAL_CAPACITY;
+    }
+    
+    Array *array = (Array *)malloc(sizeof(Array));
+
     array->arr = (int*)calloc(size, sizeof(int));
     array->size = size;
     array->current = 0;
@@ -33,7 +53,7 @@ void freeArray(Array *array) {
     array->current = 0;
 }
 
-// Resize a given array with given size.
+// Resize a given array with size.
 void resize(Array *array, int size) {
     array->size = size;
     array->arr = realloc(array->arr, size * sizeof(int));
