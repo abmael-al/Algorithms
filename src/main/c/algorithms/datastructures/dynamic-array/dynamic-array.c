@@ -235,3 +235,40 @@ int find(int value, const Array array) {
 
     return valueIndex;
 }
+
+int main() {
+    Array *array = CreateArray(MAX);
+
+    push(1, array); 
+    push(2, array); 
+    push(3, array); 
+    push(4, array); 
+    push(5, array);
+    push(6, array); 
+    push(7, array); 
+    push(8, array); 
+   
+    push(9, array); 
+    push(9, array); 
+    push(9, array); 
+    push(9, array); 
+    push(9, array); 
+    push(9, array); 
+    push(9, array); 
+    push(9, array); 
+    push(9, array); 
+
+    print(*array);
+
+    deleteAt(1, array);
+
+    print(*array);
+
+    removeValue(9, array);
+
+    print(*array);
+
+    printf("\nFind: %d", find(1, *array));
+
+    return 0;
+}
