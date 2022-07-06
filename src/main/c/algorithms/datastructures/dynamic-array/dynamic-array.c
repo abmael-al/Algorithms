@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 #define ILLEGAL_CAPACITY NULL
+#define ERR_EMPTY_ARR -1
+#define MAX 10
 
 typedef struct Array {
     int *arr;
@@ -158,6 +160,7 @@ void deleteAt(int index, Array* array) {
     int posterior = current + 1;
     while(current != array->current) {
         array->arr[current] = array->arr[posterior];
+
         ++current;
         ++posterior;
     }
@@ -215,17 +218,20 @@ int at(int index, Array array) {
 // Looks for value and returns first index with that value, -1 if not found.
 // This implementation take into consideration that the array isn't sorted out.
 // Time complexity: O(n)
-int find(int value, Array array) {
+int find(int value, const Array array) {
     if(isEmpty(array.arr)) {
-        return -1;
+        return ERR_EMPTY_ARR;
     }
 
-    int index = 0;
-    for(index = 0; index <= array.current; index++) {
-        if(array.arr[index] == value) {
-            return index;
+    int valueIndex = -1;
+
+    int i;
+    for(i = 0; i <= array.current; i++) {
+        if(array.arr[i] == value) {
+            valueIndex = i;
+            break;
         }
     }
 
-    return -1;
+    return valueIndex;
 }
