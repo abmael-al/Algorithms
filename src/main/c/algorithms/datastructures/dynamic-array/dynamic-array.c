@@ -236,6 +236,32 @@ int find(int value, const Array array) {
     return valueIndex;
 }
 
+char *toString(const Array array) {
+    char *string = (char *)calloc(array.current + 2, sizeof(char));
+    
+    string[0] = '[';
+    
+    if(isEmpty(array.arr)) {
+        string[1] = ']';
+
+        return string;
+    }
+
+    int i;
+    for(i = 0; i < array.current; i++) {
+        // TODO: Add space and comma
+        const int token = array.arr[i] + '0';
+        
+        int tokenIndex = i + 1;
+
+        string[tokenIndex] = token;
+    }
+
+    string[i + 1] = ']';
+
+    return string;
+}
+
 int main() {
     Array *array = CreateArray(MAX);
 
