@@ -179,6 +179,10 @@ void removeWhileElementAtIndexEqualsToValue(int index, int value, Array *array) 
     
     while(array->arr[index] == value) {
         deleteAt(index, array);
+        
+        if(isEmpty(array->arr)) {
+            break;
+        }
     }
 }
 
