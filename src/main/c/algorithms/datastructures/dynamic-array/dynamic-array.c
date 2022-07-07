@@ -149,7 +149,7 @@ void deleteAt(int index, Array* array) {
         return;
     }
 
-    int isTheLastElementInTheArray = array->current == 0 && index == 0;
+    int isTheLastElementInTheArray = array->current == 1;
 
     if(isTheLastElementInTheArray) {
         freeArray(array);
