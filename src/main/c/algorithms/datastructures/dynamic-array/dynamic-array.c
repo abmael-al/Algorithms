@@ -275,15 +275,14 @@ char * cookString(const Array source, char destination[], const size_t destinati
 char *toString(const Array array) {
     const int BUT_NOT_FOR_THE_LAST_ELEMENT = 2;
     const int MEMORY_FOR_COMMA_AND_SPACE = 3;
-    const int NULL_BYTE = 1;
-    const int SPACE_FOR_BRACKETS = 2;
+    const int MEMORY_FOR_NULL_BYTE = 1;
+    const int MEMORY_FOR_BRACKETS = 2;
     const int isArrayEmpty = isEmpty(array.arr) || (array.current == 0);
     
-    int NumOfElements = isArrayEmpty ? SPACE_FOR_BRACKETS + NULL_BYTE : 
-                            (array.current * 
-                            MEMORY_FOR_COMMA_AND_SPACE - 
+    int NumOfElements = isArrayEmpty ? MEMORY_FOR_BRACKETS + MEMORY_FOR_NULL_BYTE : 
+                            (array.current * MEMORY_FOR_COMMA_AND_SPACE - 
                             BUT_NOT_FOR_THE_LAST_ELEMENT) + 
-                            SPACE_FOR_BRACKETS + NULL_BYTE;
+                            MEMORY_FOR_BRACKETS + MEMORY_FOR_NULL_BYTE;
     
     char *string = (char *)calloc(NumOfElements, sizeof(char));
 
