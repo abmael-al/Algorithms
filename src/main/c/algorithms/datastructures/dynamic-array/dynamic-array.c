@@ -3,7 +3,7 @@
 
 #define ILLEGAL_CAPACITY NULL
 #define ERR_EMPTY_ARR -1
-#define MAX 10
+#define INITIAL_CAPACITY 10
 
 typedef struct Array {
     int *arr;
@@ -293,38 +293,23 @@ char *toString(const Array array) {
 }
 
 int main() {
-    Array *array = CreateArray(MAX);
+    Array *array = CreateArray(INITIAL_CAPACITY);
 
     push(1, array); 
     push(2, array); 
     push(3, array); 
     push(4, array); 
-    push(5, array);
+    push(5, array); 
     push(6, array); 
     push(7, array); 
     push(8, array); 
-   
     push(9, array); 
-    push(9, array); 
-    push(9, array); 
-    push(9, array); 
-    push(9, array); 
-    push(9, array); 
-    push(9, array); 
-    push(9, array); 
-    push(9, array); 
-
+    
     print(*array);
 
-    deleteAt(1, array);
+    printf("\nFind: %d\n", find(1, *array));
 
-    print(*array);
-
-    removeValue(9, array);
-
-    print(*array);
-
-    printf("\nFind: %d", find(1, *array));
+    printf("\nTo string: %s", toString(*array));
 
     return 0;
 }
