@@ -240,28 +240,54 @@ int find(int value, const Array array) {
     return valueIndex;
 }
 
-char *toString(const Array array) {
-    char *string = (char *)calloc(array.current + 2, sizeof(char));
-    
-    string[0] = '[';
-    
-    if(isEmpty(array.arr)) {
-        string[1] = ']';
-
-        return string;
-    }
-
+char * cookString(const Array source, char destination[], const size_t destinationCapacity) {
+    int workingIndex = 1;
     int i;
-    for(i = 0; i < array.current; i++) {
-        // TODO: Add space and comma
-        const int token = array.arr[i] + '0';
-        
-        int tokenIndex = i + 1;
 
-        string[tokenIndex] = token;
+    destination[0] = '[';
+
+    for(i = 0; i < source.current; i++) {
+        const int token = source.arr[i] + '0';
+        const int tokenIndex = workingIndex;
+        const int commaIndex = workingIndex + 1;
+        const int spaceIndex = workingIndex + 2;
+
+        destination[tokenIndex] = token;
+
+        int isNotGoingToAddCommaAndSpaceToLastElement = i != source.current - 1;
+        if(isNotGoingToAddCommaAndSpaceToLastElement) {
+            destination[commaIndex] = ',';
+            destination[spaceIndex] = ' ';
+        }
+
+        workingIndex += 3;
     }
 
-    string[i + 1] = ']';
+    int secondToLastIndex = destinationCapacity - 2;
+    int lastIndex = destinationCapacity - 1;
+
+    destination[secondToLastIndex] = ']';
+    destination[lastIndex] = '\0';
+
+    return destination;
+}
+
+char *toString(const Array array) {
+    const int BUT_NOT_FOR_THE_LAST_ELEMENT = 2;
+    const int MEMORY_FOR_COMMA_AND_SPACE = 3;
+    const int NULL_BYTE = 1;
+    const int SPACE_FOR_BRACKETS = 2;
+    const int isArrayEmpty = isEmpty(array.arr) || (array.current == 0);
+    
+    int NumOfElements = isArrayEmpty ? SPACE_FOR_BRACKETS + NULL_BYTE : 
+                            (array.current * 
+                            MEMORY_FOR_COMMA_AND_SPACE - 
+                            BUT_NOT_FOR_THE_LAST_ELEMENT) + 
+                            SPACE_FOR_BRACKETS + NULL_BYTE;
+    
+    char *string = (char *)calloc(NumOfElements, sizeof(char));
+
+    cookString(array, string, NumOfElements);
 
     return string;
 }
