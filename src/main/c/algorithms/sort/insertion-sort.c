@@ -5,24 +5,23 @@
 // OUTPUT: A permutation (reordering) {a1', a2', a3' ..., an'} of the input
 // array such that a1' <=  a2' <= a3' ... <= an'.
 
-void insertionSort(int array[], int sizeOfArray) {    
-    int arrayLength = sizeOfArray / sizeof(array[0]);
-    int i = 1;
-    
-    for(i; i < arrayLength; i++) {
-        int key = array[i];
-        int priorIndex = i - 1;            
+void insertionSort(int array[], const int length) {
+    if(array == NULL) {
+        return;
+    }   
 
-        while(priorIndex >= 0 && array[priorIndex] > key) {
-            int posteriorIndex = priorIndex + 1;
+    int i, j, key;
 
-            array[posteriorIndex] = array[priorIndex];
+    for(i = 1; i < length; i++) {
+        key = array[i];
+        j = i;            
 
-            priorIndex = priorIndex - 1;
+        while(array[j - 1] > key) {
+            array[j] = array[j - 1];
+
+            j--;
         }
 
-        int index = priorIndex + 1;
-
-        array[index] = key;
+        array[j] = key;
     }
 }
