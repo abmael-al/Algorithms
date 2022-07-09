@@ -25,3 +25,15 @@ void insertionSort(int array[], const int length) {
         array[j] = key;
     }
 }
+
+int main() {
+    int arr[] = { 9, 2, 65, 3, 7, 1, 2 };
+    int length = sizeof arr / sizeof(int);
+
+    insertionSort(arr, length);
+
+    int i; 
+    for(i = 0; i < length; i++) {
+        printf("%d ", arr[i]);
+    }
+}
