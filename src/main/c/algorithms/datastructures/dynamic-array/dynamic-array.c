@@ -242,23 +242,20 @@ int find(int value, const Array array) {
 
 char * cookString(const Array source, char destination[], const size_t destinationCapacity) {
     int workingIndex = 1;
-    int i;
+    int i, token, tokenIndex, commaIndex, spaceIndex;
 
     destination[0] = '[';
 
-    for(i = 0; i < source.current; i++) {
-        const int token = source.arr[i] + '0';
-        const int tokenIndex = workingIndex;
-        const int commaIndex = workingIndex + 1;
-        const int spaceIndex = workingIndex + 2;
+    for(i = 0; workingIndex < destinationCapacity; i++) {
+        token = source.arr[i] + '0';
+        
+        tokenIndex = workingIndex;
+        commaIndex = workingIndex + 1;
+        spaceIndex = workingIndex + 2;
 
         destination[tokenIndex] = token;
-
-        int isNotGoingToAddCommaAndSpaceToLastElement = i != source.current - 1;
-        if(isNotGoingToAddCommaAndSpaceToLastElement) {
-            destination[commaIndex] = ',';
-            destination[spaceIndex] = ' ';
-        }
+        destination[commaIndex] = ',';
+        destination[spaceIndex] = ' ';
 
         workingIndex += 3;
     }
@@ -274,15 +271,13 @@ char * cookString(const Array source, char destination[], const size_t destinati
 
 char *toString(const Array array) {
     const int BUT_NOT_FOR_THE_LAST_ELEMENT = 2;
-    const int MEMORY_FOR_COMMA_AND_SPACE = 3;
-    const int MEMORY_FOR_NULL_BYTE = 1;
-    const int MEMORY_FOR_BRACKETS = 2;
+    const int ALONG_WITH_COMMA_AND_SPACE = 3;
+    const int NULL_BYTE = 1;
+    const int BRACKETS = 2;
     const int isArrayEmpty = isEmpty(array.arr) || (array.current == 0);
     
-    int NumOfElements = isArrayEmpty ? MEMORY_FOR_BRACKETS + MEMORY_FOR_NULL_BYTE : 
-                            (array.current * MEMORY_FOR_COMMA_AND_SPACE - 
-                            BUT_NOT_FOR_THE_LAST_ELEMENT) + 
-                            MEMORY_FOR_BRACKETS + MEMORY_FOR_NULL_BYTE;
+    int NumOfElements = isArrayEmpty ? BRACKETS + NULL_BYTE : 
+                        (array.current * ALONG_WITH_COMMA_AND_SPACE - BUT_NOT_FOR_THE_LAST_ELEMENT) + BRACKETS + NULL_BYTE;
     
     char *string = (char *)calloc(NumOfElements, sizeof(char));
 
