@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void swap(int arr[], int i, int j) {
+    int temp = arr[i];
+
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+
 void selectionSort(int array[], const size_t length) {
     if(array == NULL) {
         return;
     }
 
-    int i, j, min, temp;
+    int i, j, min;
 
     for(i = 0; i < length; i++) {
         min = i;
@@ -17,9 +25,7 @@ void selectionSort(int array[], const size_t length) {
             }
         }
 
-        temp = array[min];
-        array[min] = array[i];
-        array[i] = temp;
+        swap(array, i, min);
     }
 }
 
