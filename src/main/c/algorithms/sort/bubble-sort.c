@@ -23,3 +23,17 @@ void bubbleSort(int arr[], const size_t length) {
         }
     }
 }
+
+int main() {
+    int arr[] = { 6, 1, 5, 9, 1, 3, 7, 5, 4, 12 };
+    const size_t length = sizeof arr / sizeof(int);
+
+    bubbleSort(arr, length);
+
+    int i;
+    for(i = 0; i < length; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
