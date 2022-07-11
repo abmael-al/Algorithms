@@ -71,3 +71,13 @@ Node * search(Node *root, const int value) {
 
     return NULL;
 }
+
+void inorderTraversal(const Node *root) {
+    if(root) {
+        inorderTraversal(root->left);
+
+        printf("%d ", root->value);
+
+        inorderTraversal(root->right);
+    }
+}
