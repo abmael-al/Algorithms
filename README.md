@@ -22,6 +22,7 @@ If you'd like to add or improve an algorithm your contribution is welcome!
 ## Sort Algorithms
 - [Insertion Sort](./src/main/c/algorithms/sort/insertion-sort.c) **- O(n<sup>2</sup>)**
 - [Selection Sort](./src/main/c/algorithms/sort/selection-sort.c) **- O(n<sup>2</sup>)**
+- [Bubble Sort](./src/main/c/algorithms/sort/selection-sort.c) **- O(n<sup>2</sup>)**
 
 ## Interview Questions
 #### Linked-list
