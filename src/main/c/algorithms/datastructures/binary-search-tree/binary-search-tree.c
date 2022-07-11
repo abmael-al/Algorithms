@@ -53,3 +53,21 @@ void insert(const int value, Node **root) {
         }
     }
 }
+
+Node * search(Node *root, const int value) {
+    Node *current = root;
+
+    while(current) {
+        if(value < current->value) {
+            current = current->left;
+        }
+        else if(value > current->value) {
+            current = current->right;
+        }
+        else {
+            return current;
+        }
+    }
+
+    return NULL;
+}
