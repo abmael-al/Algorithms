@@ -7,6 +7,7 @@ This repository's goal is to demonstrate how to implement common data structures
 If you'd like to add or improve an algorithm your contribution is welcome!
 
 ## Data Structures
+- [Binary search tree](./src/main/c/algorithms/datastructures/binary-search-tree/binary-search-tree.c)	 
 - [Dynamic Array](./src/main/c/algorithms/datastructures/dynamic-array/dynamic-array.c)	 
 - [Linked List](./src/main/c/algorithms/datastructures/linked-list)
 	- [Singly Linked List](./src/main/c/algorithms/datastructures/linked-list/linked-list.c)
