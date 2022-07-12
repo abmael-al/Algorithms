@@ -99,6 +99,20 @@ int findMin(Node* root) {
     return current->value;
 }
 
+int findMax(Node *root) {
+    if(isEmpty(root)) {
+        return ERR_EMPTY_TREE;
+    }
+
+    Node *current = root;
+
+    while(current->right) {
+        current = current->right;
+    }
+
+    return current->value;
+}
+
 // Height: number of edges in longest path 
 // from the node to a leaf node.
 int findHeight(const Node *root) {
