@@ -24,6 +24,49 @@ int isEmpty(const Node *node) {
     return node == NULL;
 }
 
+int findMin(Node* root) {
+    if(isEmpty(root)) {
+        return ERR_EMPTY_TREE;
+    }
+
+    Node *current = root;
+
+    while(current->left) {
+        current = current->left;
+    }
+
+    return current->value;
+}
+
+int findMax(Node *root) {
+    if(isEmpty(root)) {
+        return ERR_EMPTY_TREE;
+    }
+
+    Node *current = root;
+
+    while(current->right) {
+        current = current->right;
+    }
+
+    return current->value;
+}
+
+// Height: number of edges in longest path 
+// from the node to a leaf node.
+int findHeight(const Node *root) {
+    if(isEmpty(root)) {
+        return ERR_EMPTY_TREE;
+    }
+
+    int leftHeight, rightHeight;
+
+    leftHeight = findHeight(root->left);
+    rightHeight = findHeight(root->right);
+
+    return fmax(leftHeight, rightHeight) + 1;
+}
+
 void insert(const int value, Node **root) {
     Node *node = createNode(value);
     
@@ -83,47 +126,4 @@ void inorderTraversal(const Node *root) {
 
         inorderTraversal(root->right);
     }
-}
-
-int findMin(Node* root) {
-    if(isEmpty(root)) {
-        return ERR_EMPTY_TREE;
-    }
-
-    Node *current = root;
-
-    while(current->left) {
-        current = current->left;
-    }
-
-    return current->value;
-}
-
-int findMax(Node *root) {
-    if(isEmpty(root)) {
-        return ERR_EMPTY_TREE;
-    }
-
-    Node *current = root;
-
-    while(current->right) {
-        current = current->right;
-    }
-
-    return current->value;
-}
-
-// Height: number of edges in longest path 
-// from the node to a leaf node.
-int findHeight(const Node *root) {
-    if(isEmpty(root)) {
-        return ERR_EMPTY_TREE;
-    }
-
-    int leftHeight, rightHeight;
-
-    leftHeight = findHeight(root->left);
-    rightHeight = findHeight(root->right);
-
-    return fmax(leftHeight, rightHeight) + 1;
 }
