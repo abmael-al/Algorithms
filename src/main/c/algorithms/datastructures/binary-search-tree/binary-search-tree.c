@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+
+#define ERR_EMPTY_TREE -1
 
 typedef struct Node {
     int value;
@@ -17,7 +20,7 @@ Node * createNode(const int value) {
     return node;
 }
 
-int isEmpty(Node *node) {
+int isEmpty(const Node *node) {
     return node == NULL;
 }
 
@@ -80,4 +83,19 @@ void inorderTraversal(const Node *root) {
 
         inorderTraversal(root->right);
     }
+}
+
+// Height: number of edges in longest path 
+// from the node to a leaf node.
+int findHeight(const Node *root) {
+    if(isEmpty(root)) {
+        return ERR_EMPTY_TREE;
+    }
+
+    int leftHeight, rightHeight;
+
+    leftHeight = findHeight(root->left);
+    rightHeight = findHeight(root->right);
+
+    return fmax(leftHeight, rightHeight) + 1;
 }
