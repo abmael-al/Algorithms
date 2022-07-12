@@ -85,6 +85,20 @@ void inorderTraversal(const Node *root) {
     }
 }
 
+int findMin(Node* root) {
+    if(isEmpty(root)) {
+        return ERR_EMPTY_TREE;
+    }
+
+    Node *current = root;
+
+    while(current->left) {
+        current = current->left;
+    }
+
+    return current->value;
+}
+
 // Height: number of edges in longest path 
 // from the node to a leaf node.
 int findHeight(const Node *root) {
