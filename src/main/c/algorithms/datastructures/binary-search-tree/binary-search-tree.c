@@ -118,6 +118,13 @@ Node * search(Node *root, const int value) {
     return NULL;
 }
 
+// --- TREE TRAVERSAL: DEPTH-FIRST  ---
+// Go as deep as possible down one path before  backing up 
+// and trying a different one.
+
+// Preorder traversal (root, left, right): read the data and
+// go as deep as possible to the left before backing up and 
+// going to the right.
 void preorderTraversal(const Node *root) {
     if(root) {
         printf("%d ", root->value);
@@ -128,6 +135,9 @@ void preorderTraversal(const Node *root) {
     }
 }
 
+// Inorder traversal (left, root, right): go as deep as possible 
+// to the left before backing up, reading the data and going to 
+// the right.
 void inorderTraversal(const Node *root) {
     if(root) {
         inorderTraversal(root->left);
@@ -138,6 +148,9 @@ void inorderTraversal(const Node *root) {
     }
 }
 
+// Postorder traversal (left, right, root): go as deep as possible
+// to the left and then go as deep as possible to the right before
+// backing up and reading the data.
 void postorderTraversal(const Node* root) {
     if(root) {
         postorderTraversal(root->left);
@@ -146,4 +159,32 @@ void postorderTraversal(const Node* root) {
 
         printf("%d ", root->value);
     }
+}
+
+// --- TREE TRAVERSAL: BREADTH-FIRST  ---
+// Visit all the nodes at the same level (depth) before visiting 
+// the nodes at the next level.
+
+int main() {
+    Node *root = NULL;
+    int arr[] =
+            { 54, 6, 1, 16, 24, 4, 12, 8,
+              98, 81, 11, 7, 3, 12, 5, 9 };
+
+    int i;
+    for(i = 0; i < 16; i++) {
+        insert(arr[i], &root);
+    }
+
+    preorderTraversal(root);
+    printf("\n");
+    inorderTraversal(root);
+    printf("\n");
+    postorderTraversal(root);
+
+    printf("\nHeight: %d", findHeight(root));
+    printf("\nMin: %d", findMin(root));
+    printf("\nMax: %d", findMax(root));
+
+    return 0;
 }
