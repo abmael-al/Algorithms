@@ -118,6 +118,16 @@ Node * search(Node *root, const int value) {
     return NULL;
 }
 
+void preorderTraversal(const Node *root) {
+    if(root) {
+        printf("%d ", root->value);
+
+        preorderTraversal(root->left);
+
+        preorderTraversal(root->right);
+    }
+}
+
 void inorderTraversal(const Node *root) {
     if(root) {
         inorderTraversal(root->left);
