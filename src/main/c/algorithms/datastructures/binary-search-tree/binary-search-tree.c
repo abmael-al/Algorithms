@@ -127,3 +127,13 @@ void inorderTraversal(const Node *root) {
         inorderTraversal(root->right);
     }
 }
+
+void postorderTraversal(const Node* root) {
+    if(root) {
+        postorderTraversal(root->left);
+
+        postorderTraversal(root->right);
+
+        printf("%d ", root->value);
+    }
+}
