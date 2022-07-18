@@ -75,3 +75,28 @@ int Queue_Peek(const Queue queue, void *dest) {
 
     return OPERATION_ALLOWED;
 }
+
+int enqueue(Queue *queue, const void *data) {
+    Node *node;
+
+    Node_Create(&node, queue->mem_size);
+
+    if(node == NULL) {
+        return ERR_MEMORY_ALLOCATION_NOT_ALLOWED;
+    }
+
+    memcpy(node->data, data, queue->mem_size);
+
+    if(Queue_IsEmpty(*queue)) {
+        queue->tail = node;
+        node->next = node;
+    }
+    else {
+        node->next = queue->tail->next;
+        
+        queue->tail->next = node;
+        queue->tail = node;
+    }
+
+    return OPERATION_ALLOWED;
+}
