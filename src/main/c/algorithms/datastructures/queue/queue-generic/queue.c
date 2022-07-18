@@ -59,3 +59,7 @@ int Queue_Init(Queue *queue, const size_t mem_size) {
 
     return OPERATION_ALLOWED;
 }
+
+bool Queue_IsEmpty(const Queue queue) {    
+    return queue.tail == NULL;
+}
