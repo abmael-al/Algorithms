@@ -63,3 +63,15 @@ int Queue_Init(Queue *queue, const size_t mem_size) {
 bool Queue_IsEmpty(const Queue queue) {    
     return queue.tail == NULL;
 }
+
+int Queue_Peek(const Queue queue, void *dest) {
+    if(Queue_IsEmpty(queue)) {
+        return ERR_EMPTY_QUEUE;
+    }
+
+    const Node *head = queue.tail->next;
+
+    memcpy(dest, head->data, queue.mem_size);
+
+    return OPERATION_ALLOWED;
+}
