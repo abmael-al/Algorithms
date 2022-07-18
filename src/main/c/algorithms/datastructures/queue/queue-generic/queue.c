@@ -100,3 +100,24 @@ int enqueue(Queue *queue, const void *data) {
 
     return OPERATION_ALLOWED;
 }
+
+int dequeue(Queue *queue, void *dequeued_data_dest) {
+    if(Queue_IsEmpty(*queue)) {
+        return ERR_EMPTY_QUEUE;
+    }
+
+    Node *ex_head = queue->tail->next;
+    Node *new_head = ex_head->next;
+
+    bool isNotTheLastNode = new_head != ex_head;
+
+    queue->tail->next = (isNotTheLastNode) ? new_head : NULL;
+    queue->tail = (isNotTheLastNode) ? queue->tail : NULL;
+
+    memcpy(dequeued_data_dest, ex_head->data, queue->mem_size);
+    
+    free(ex_head->data);
+    free(ex_head);
+
+    return OPERATION_ALLOWED;
+}
