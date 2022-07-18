@@ -15,6 +15,7 @@ If you'd like to add or improve an algorithm your contribution is welcome!
 - [Queue](./src/main/c/algorithms/datastructures/queue)
 	- [Queue (linked list)](./src/main/c/algorithms/datastructures/queue/queue-with-linked-list.c)
 	- [Queue (array)](./src/main/c/algorithms/datastructures/queue/queue-with-array.c)
+	- [Queue (generic)](./src/main/c/algorithms/datastructures/queue/queue-generic/queue.c.c)
 - [Stack](./src/main/c/algorithms/datastructures/stack/stack.c)
 
 ## Search Algorithms
