@@ -48,3 +48,14 @@ int Node_Create(Node **dest, const size_t mem_size) {
 
     return ALLOCATION_ALLOWED;
 }
+
+int Queue_Init(Queue *queue, const size_t mem_size) {
+   if(mem_size == 0) {
+        return ERR_ILLEGAL_MEM_SIZE;
+   }
+   
+    queue->mem_size = mem_size;
+    queue->tail = NULL;
+
+    return OPERATION_ALLOWED;
+}
