@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "../queue/queue-generic/Queue.h"
 
 #define ERR_EMPTY_TREE -1
 
