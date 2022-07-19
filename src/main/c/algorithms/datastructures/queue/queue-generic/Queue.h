@@ -36,7 +36,8 @@ int enqueue(Queue *queue, const void *data);
 
 
 /* Makes a copy of least recently added element, then assign the copy at 
- the respective argument and removes the element from the queue.
+ the respective argument and removes the element from the queue. 
+ If dequeued_data_dest is empty (equal to NULL), then nothing is assigned.
 
  Returns 1 if the operation is successful. If the queue is empty, 
  returns -1. */
