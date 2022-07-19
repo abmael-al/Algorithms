@@ -114,7 +114,9 @@ int dequeue(Queue *queue, void *dequeued_data_dest) {
     queue->tail->next = (isNotTheLastNode) ? new_head : NULL;
     queue->tail = (isNotTheLastNode) ? queue->tail : NULL;
 
-    memcpy(dequeued_data_dest, ex_head->data, queue->mem_size);
+    if(dequeued_data_dest != NULL) {
+        memcpy(dequeued_data_dest, ex_head->data, queue->mem_size);
+    }
     
     free(ex_head->data);
     free(ex_head);
