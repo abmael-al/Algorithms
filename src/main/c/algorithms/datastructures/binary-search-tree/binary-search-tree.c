@@ -165,6 +165,33 @@ void postorderTraversal(const Node* root) {
 // --- TREE TRAVERSAL: BREADTH-FIRST  ---
 // Visit all the nodes at the same level (depth) before visiting 
 // the nodes at the next level.
+void levelOrderTraversal(Node *root) {
+    if(isEmpty(root)) {
+        return;
+    }
+
+    Node *current;
+    Queue queue;
+    
+    Queue_Init(&queue, sizeof (Node *));
+    enqueue(&queue, &root);
+        
+    while(!Queue_IsEmpty(queue)) {
+        Queue_Peek(queue, &current);
+
+        printf("%d ", current->value);
+
+        if(!isEmpty(current->left)) {
+            enqueue(&queue, &current->left);
+        }
+
+        if(!isEmpty(current->right)) {
+            enqueue(&queue, &current->right);
+        }
+
+        dequeue(&queue, NULL);
+    }
+}
 
 int main() {
     Node *root = NULL;
@@ -177,11 +204,14 @@ int main() {
         insert(arr[i], &root);
     }
 
+    printf("\nPreorder traversal: ");
     preorderTraversal(root);
-    printf("\n");
+    printf("\nInorder traversal: ");
     inorderTraversal(root);
-    printf("\n");
+    printf("\nPostorder traversal: ");
     postorderTraversal(root);
+    printf("\nLevelorder travesal: ");
+    levelOrderTraversal(root);
 
     printf("\nHeight: %d", findHeight(root));
     printf("\nMin: %d", findMin(root));
