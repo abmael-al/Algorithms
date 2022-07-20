@@ -4,3 +4,8 @@
 #define PROCEDURE_ALLOWED 1
 #define ERR_NODE_MEM_ALLOCATION_NOT_ALLOWED -1
 #define ERR_MEMORY_ALLOCATION_NOT_ALLOWED -2
+
+typedef struct Node {
+    int value;
+    struct Node *next;
+} Node;
