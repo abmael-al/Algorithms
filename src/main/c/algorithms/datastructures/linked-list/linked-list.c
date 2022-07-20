@@ -34,3 +34,8 @@ int CreateNode(const int value, Node **dest) {
 
     return PROCEDURE_ALLOWED;
 }
+
+// Check if a given pointer to node is empty (pointing to NULL).
+int isEmpty(const Node *node) {
+    return node == NULL;
+}
