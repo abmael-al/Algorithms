@@ -40,6 +40,22 @@ int isEmpty(const Node *node) {
     return node == NULL;
 }
 
+void print(LinkedList list) {
+    if(isEmpty(list.tail)) {
+        return;
+    }
+
+    Node *head = list.tail->next;
+    Node *current = head;
+
+    do {
+        printf("%d ", current->value);
+        
+        current = current->next;
+        
+    } while(current != head);
+}
+
 int insert(const int value, LinkedList *list) {
     Node *node = NULL;
     Node *head = (isEmpty(list->tail)) ? NULL : list->tail->next; 
