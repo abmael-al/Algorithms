@@ -13,3 +13,8 @@ typedef struct Node {
 typedef struct LinkedList {
     Node *tail;
 } LinkedList;
+
+// Fully initialize all fields of a linked list.
+void InitLinkedList(LinkedList *list) {
+    list->tail = NULL;
+}
