@@ -18,3 +18,19 @@ typedef struct LinkedList {
 void InitLinkedList(LinkedList *list) {
     list->tail = NULL;
 }
+
+// Create a fully initialized node.
+int CreateNode(const int value, Node **dest) {
+    Node *node = (Node *)malloc(sizeof(Node));
+
+    if(node == NULL) {
+        return ERR_NODE_MEM_ALLOCATION_NOT_ALLOWED;
+    }
+
+    node->value = value;
+    node->next = NULL;
+
+    *dest = node;
+
+    return PROCEDURE_ALLOWED;
+}
