@@ -39,3 +39,25 @@ int CreateNode(const int value, Node **dest) {
 int isEmpty(const Node *node) {
     return node == NULL;
 }
+
+int insert(const int value, LinkedList *list) {
+    Node *node = NULL;
+    Node *head = (isEmpty(list->tail)) ? NULL : list->tail->next; 
+    
+    CreateNode(value, &node);
+
+    if(isEmpty(node)) {
+        return ERR_MEMORY_ALLOCATION_NOT_ALLOWED;
+    }
+
+    node->next = (isEmpty(head)) ? node : head;
+
+    if(isEmpty(list->tail)) {
+        list->tail = node;
+    }
+    else {
+        list->tail->next = node;
+    }
+
+    return PROCEDURE_ALLOWED;    
+}
