@@ -77,3 +77,19 @@ int insert(const int value, LinkedList *list) {
 
     return PROCEDURE_ALLOWED;    
 }
+
+int main() {
+    LinkedList list;
+
+    InitLinkedList(&list);
+
+    insert(1, &list);
+    insert(2, &list);
+    insert(3, &list);
+    insert(4, &list);
+    insert(5, &list);
+
+    print(list);
+
+    return 0;
+}
