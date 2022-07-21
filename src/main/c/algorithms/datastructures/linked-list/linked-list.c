@@ -98,6 +98,37 @@ int append(const int value, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
+int insertAt(const int value, const size_t index, LinkedList *list) {
+    Node *node = NULL;
+    Node *head = isEmpty(list->tail) ? NULL : list->tail->next;
+    Node *current = list->tail;
+    size_t currIndex = 0;
+
+    CreateNode(value, &node);
+
+    if(isEmpty(node)) {
+        return ERR_MEMORY_ALLOCATION_NOT_ALLOWED;
+    }
+
+    if(isEmpty(head)) {
+        list->tail = node;
+        node->next = node;
+
+        return PROCEDURE_ALLOWED;
+    }
+
+    while(currIndex != index - 1) {
+        current = current->next;
+
+        ++currIndex;
+    }
+
+    node->next = current->next;
+    current->next = node;
+
+    return PROCEDURE_ALLOWED;
+}
+
 // Insert item at given index 
 
 // Remove from front
