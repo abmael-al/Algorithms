@@ -66,7 +66,7 @@ int insert(const int value, LinkedList *list) {
         return ERR_MEMORY_ALLOCATION_NOT_ALLOWED;
     }
 
-    node->next = (isEmpty(head)) ? node : head;
+    node->next = isEmpty(head) ? node : head;
 
     if(isEmpty(list->tail)) {
         list->tail = node;
@@ -78,18 +78,37 @@ int insert(const int value, LinkedList *list) {
     return PROCEDURE_ALLOWED;    
 }
 
-int main() {
-    LinkedList list;
+int append(const int value, LinkedList *list) {
+    Node *node = NULL;
 
-    InitLinkedList(&list);
+    CreateNode(value, &node);
 
-    insert(1, &list);
-    insert(2, &list);
-    insert(3, &list);
-    insert(4, &list);
-    insert(5, &list);
+    if(isEmpty(node)) {
+        return ERR_MEMORY_ALLOCATION_NOT_ALLOWED;
+    }
 
-    print(list);
+    node->next = isEmpty(list->tail) ? node : list->tail->next;
 
-    return 0;
+    if(!isEmpty(list->tail)) {
+        list->tail->next = node;
+    }
+
+    list->tail = node;
+
+    return PROCEDURE_ALLOWED;
 }
+
+// Insert item at given index 
+
+// Remove from front
+// Remove from end
+// Remove node at given index
+// Remove first item in the list with given value
+
+// Get front item
+// Get back item
+
+// Reverse
+// Return value of the nth item
+// Value N from end
+// Size
