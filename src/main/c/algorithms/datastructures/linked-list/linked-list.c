@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define PROCEDURE_ALLOWED 1
 #define ERR_NODE_MEM_ALLOCATION_NOT_ALLOWED -1
 #define ERR_MEMORY_ALLOCATION_NOT_ALLOWED -2
+#define ERR_INDEX_OUT_OF_RANGE -3
 
 typedef struct Node {
     int value;
@@ -103,6 +105,7 @@ int insertAt(const int value, const size_t index, LinkedList *list) {
     Node *head = isEmpty(list->tail) ? NULL : list->tail->next;
     Node *current = list->tail;
     size_t currIndex = 0;
+    bool isOutOfRange;
 
     CreateNode(value, &node);
 
@@ -119,8 +122,13 @@ int insertAt(const int value, const size_t index, LinkedList *list) {
 
     while(currIndex != index - 1) {
         current = current->next;
+        currIndex++;
+    }
 
-        ++currIndex;
+    isOutOfRange = (current->next == head) && (index != 1);
+
+    if(isOutOfRange) {
+        return ERR_INDEX_OUT_OF_RANGE;
     }
 
     node->next = current->next;
@@ -128,8 +136,6 @@ int insertAt(const int value, const size_t index, LinkedList *list) {
 
     return PROCEDURE_ALLOWED;
 }
-
-// Insert item at given index 
 
 // Remove from front
 // Remove from end
