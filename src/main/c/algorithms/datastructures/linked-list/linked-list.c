@@ -6,6 +6,7 @@
 #define ERR_NODE_MEM_ALLOCATION_NOT_ALLOWED -1
 #define ERR_MEMORY_ALLOCATION_NOT_ALLOWED -2
 #define ERR_INDEX_OUT_OF_RANGE -3
+#define ERR_EMPTY_LIST -4
 
 typedef struct Node {
     int value;
@@ -137,7 +138,26 @@ int insertAt(const int value, const size_t index, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
-// Remove from front
+int removeFromFront(LinkedList *list) {
+    if(isEmpty(list->tail)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    Node *head = list->tail->next;
+    bool isTheLastElementInTheList = (head->next == head);
+
+    if(isTheLastElementInTheList) {
+        list->tail = NULL;
+    }
+    else {
+        list->tail->next = head->next;
+    }
+
+    free(head);
+
+    return PROCEDURE_ALLOWED;
+}
+
 // Remove from end
 // Remove node at given index
 // Remove first item in the list with given value
