@@ -3,10 +3,10 @@
 #include <stdbool.h>
 
 #define PROCEDURE_ALLOWED 1
+#define ERR_EMPTY_LIST 0
 #define ERR_NODE_MEM_ALLOCATION_NOT_ALLOWED -1
 #define ERR_MEMORY_ALLOCATION_NOT_ALLOWED -2
 #define ERR_INDEX_OUT_OF_RANGE -3
-#define ERR_EMPTY_LIST -4
 
 typedef struct Node {
     int value;
@@ -39,7 +39,7 @@ int CreateNode(const int value, Node **dest) {
 }
 
 // Check if a given pointer to node is empty (pointing to NULL).
-int isEmpty(const Node *node) {
+bool isEmpty(const Node *node) {
     return node == NULL;
 }
 
@@ -158,7 +158,35 @@ int removeFromFront(LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
-// Remove from end
+int removeFromBack(LinkedList *list) {
+    if(isEmpty(list->tail)) {
+        return ERR_EMPTY_LIST;
+    }
+    
+    Node *current = list->tail->next; /* head */
+    Node *temp = NULL;
+    bool isTheLastElementInTheList = (current->next == current);
+
+    if(isTheLastElementInTheList) {
+        list->tail = NULL;
+        free(current);
+
+        return PROCEDURE_ALLOWED;
+    }
+
+    while(current->next != list->tail) {
+        current = current->next;
+    }
+
+    temp = current->next;
+    current->next = list->tail->next;
+    list->tail = current;
+    
+    free(temp);
+
+    return PROCEDURE_ALLOWED;
+}
+
 // Remove node at given index
 // Remove first item in the list with given value
 
