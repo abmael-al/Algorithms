@@ -187,6 +187,47 @@ int removeFromBack(LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
+int removeAt(const size_t index, LinkedList *list) {
+    if(isEmpty(list->tail)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    Node *current = list->tail;
+    Node *head = list->tail->next;
+    Node *temp = NULL;
+    size_t currIndex = 0;
+    bool isOutOfRange;
+    bool isAtTheLastPosition;
+
+    // FIX: out of range handling
+    do {
+        current = current->next;
+        currIndex++;
+
+        if(current->next == head) {
+            break;
+        }
+
+    } while(currIndex != index - 1);
+
+    isOutOfRange = (current->next == head) && (index != 1);
+    isAtTheLastPosition = (current->next == list->tail);
+
+    if(isOutOfRange) {
+        return ERR_INDEX_OUT_OF_RANGE;
+    }
+
+    if(isAtTheLastPosition) {
+        list->tail = current;
+    }
+
+    temp = current->next;
+    current->next = current->next->next;
+    free(temp);
+
+    return PROCEDURE_ALLOWED;
+}
+
 // Remove node at given index
 // Remove first item in the list with given value
 
