@@ -68,6 +68,14 @@ int front(const LinkedList list) {
     return list.tail->next->value;
 }
 
+int back(const LinkedList list) {
+    if(isEmpty(list.tail)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    return list.tail->value;
+}
+
 int insert(const int value, LinkedList *list) {
     Node *node = NULL;
     Node *head = (isEmpty(list->tail)) ? NULL : list->tail->next; 
@@ -279,9 +287,6 @@ int deleteValue(const int value, LinkedList *list) {
 
     return PROCEDURE_ALLOWED;
 }
-
-// Get front item
-// Get back item
 
 // Return value of the nth item
 // Value N from end
