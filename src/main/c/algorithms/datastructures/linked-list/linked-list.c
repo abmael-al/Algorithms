@@ -76,6 +76,25 @@ int back(const LinkedList list) {
     return list.tail->value;
 }
 
+size_t length(LinkedList list) {
+    size_t size = 0;
+    
+    if(isEmpty(list.tail)) {
+        return size;
+    }
+
+    Node *head = list.tail->next;
+    Node *current = head;
+
+    do {
+        current = current->next;
+        size++;
+
+    } while(current != head);
+
+    return size;
+}
+
 int valueAt(const size_t index, LinkedList list) {
     if(isEmpty(list.tail)) {
         return ERR_EMPTY_LIST;
@@ -317,4 +336,3 @@ int deleteValue(const int value, LinkedList *list) {
 }
 
 // Value N from end
-// Size
