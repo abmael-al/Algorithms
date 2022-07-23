@@ -60,6 +60,14 @@ void print(LinkedList list) {
     } while(current != head);
 }
 
+int front(const LinkedList list) {
+    if(isEmpty(list.tail)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    return list.tail->next->value;
+}
+
 int insert(const int value, LinkedList *list) {
     Node *node = NULL;
     Node *head = (isEmpty(list->tail)) ? NULL : list->tail->next; 
@@ -275,7 +283,6 @@ int deleteValue(const int value, LinkedList *list) {
 // Get front item
 // Get back item
 
-// Reverse
 // Return value of the nth item
 // Value N from end
 // Size
