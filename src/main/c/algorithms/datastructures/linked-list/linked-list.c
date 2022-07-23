@@ -76,6 +76,34 @@ int back(const LinkedList list) {
     return list.tail->value;
 }
 
+int valueAt(const size_t index, LinkedList list) {
+    if(isEmpty(list.tail)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    Node *head = list.tail->next;
+    Node *current = head;
+    bool isOutOfBounds;
+    size_t currIndex = 1;
+
+    while(currIndex != index) {
+        current = current->next;
+        currIndex++;
+
+        if(current->next == head) {
+            break;
+        }
+    }
+
+    isOutOfBounds = (currIndex != index) && (current->next == head);
+
+    if(isOutOfBounds) {
+        return ERR_INDEX_OUT_OF_RANGE;
+    }
+
+    return current->value;
+}
+
 int insert(const int value, LinkedList *list) {
     Node *node = NULL;
     Node *head = (isEmpty(list->tail)) ? NULL : list->tail->next; 
@@ -288,6 +316,5 @@ int deleteValue(const int value, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
-// Return value of the nth item
 // Value N from end
 // Size
