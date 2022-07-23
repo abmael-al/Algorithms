@@ -6,7 +6,8 @@
 #define ERR_EMPTY_LIST 0
 #define ERR_NODE_MEM_ALLOCATION_NOT_ALLOWED -1
 #define ERR_MEMORY_ALLOCATION_NOT_ALLOWED -2
-#define ERR_INDEX_OUT_OF_RANGE -3
+#define ERR_VALUE_DOES_NOT_EXIST_IN_THE_LIST -3
+#define ERR_INDEX_OUT_OF_RANGE -4
 
 typedef struct Node {
     int value;
@@ -230,8 +231,46 @@ int removeAt(const size_t index, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
-// Remove node at given index
-// Remove first item in the list with given value
+int deleteValue(const int value, LinkedList *list) {
+    if(isEmpty(list->tail)) {
+        return ERR_EMPTY_LIST;
+    }
+
+    Node *head = list->tail->next;
+    Node *current = list->tail;
+    Node *previous = NULL;
+    bool valueDoesNotExistInTheList;
+    bool isAtTheLastPosition;
+
+    do {
+        previous = current;
+        current = current->next;
+
+        if(current->next == head) {
+            break;
+        }
+
+    } while(current->value != value);
+
+    valueDoesNotExistInTheList = (current->next == head) 
+                              && (current->value != value);
+
+    isAtTheLastPosition = (current->next == head) 
+                       && (current->value == value);
+
+    if(valueDoesNotExistInTheList) {
+        return ERR_VALUE_DOES_NOT_EXIST_IN_THE_LIST;
+    }
+
+    if(isAtTheLastPosition) {
+        list->tail = previous;
+    }
+
+    previous->next = current->next;
+    free(current);
+
+    return PROCEDURE_ALLOWED;
+}
 
 // Get front item
 // Get back item
