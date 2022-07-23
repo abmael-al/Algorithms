@@ -124,6 +124,10 @@ int insertAt(const int value, const size_t index, LinkedList *list) {
     while(currIndex != index - 1) {
         current = current->next;
         currIndex++;
+
+        if(current->next == head) {
+            break;
+        }
     }
 
     isOutOfRange = (current->next == head) && (index != 1);
@@ -199,16 +203,14 @@ int removeAt(const size_t index, LinkedList *list) {
     bool isOutOfRange;
     bool isAtTheLastPosition;
 
-    // FIX: out of range handling
-    do {
+    while(currIndex != index - 1) {
         current = current->next;
         currIndex++;
 
         if(current->next == head) {
             break;
         }
-
-    } while(currIndex != index - 1);
+    } 
 
     isOutOfRange = (current->next == head) && (index != 1);
     isAtTheLastPosition = (current->next == list->tail);
