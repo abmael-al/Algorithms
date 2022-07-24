@@ -142,18 +142,17 @@ int nthValueFromEnd(const size_t index, LinkedList list) {
             break;
         }
     }
-
-    isOutOfBounds = (ahead->next == head) && (currIndex != index);
+    
+    isOutOfBounds = (ahead->next == head) && (++currIndex != index);
 
     if(isOutOfBounds) {
         return ERR_INDEX_OUT_OF_RANGE;
     }
-    
-    do {
+
+    while(ahead->next != head) {
         ahead = ahead->next;
         behind = behind->next;
-
-    } while(ahead->next != head);
+    }
 
     return behind->value;
 }
