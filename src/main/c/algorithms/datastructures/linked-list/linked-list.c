@@ -384,3 +384,34 @@ int deleteValue(const int value, LinkedList *list) {
 
     return PROCEDURE_ALLOWED;
 }
+
+int main() {
+    LinkedList list;
+
+    InitLinkedList(&list);
+
+    insertAtHead(5, &list);
+    insertAtHead(4, &list);
+    insertAtHead(3, &list);
+    insertAtHead(2, &list);
+    insertAtHead(1, &list);
+
+    print(list);
+
+    insertAtTail(6, &list);
+    insertAtTail(7, &list);
+    insertAtTail(8, &list);
+    insertAtTail(9, &list);
+
+    print(list);
+    printf("Length: %lld\n", length(list));
+
+    deleteHead(&list);
+    deleteTail(&list);
+    deleteAt(2, &list);
+
+    print(list);
+
+
+    return 0;
+}
