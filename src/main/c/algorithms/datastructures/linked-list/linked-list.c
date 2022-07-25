@@ -44,6 +44,7 @@ bool isEmpty(const Node *node) {
     return node == NULL;
 }
 
+// Display all the values from the list. 
 void print(LinkedList list) {
     if(isEmpty(list.tail)) {
         return;
@@ -60,6 +61,7 @@ void print(LinkedList list) {
     } while(current != head);
 }
 
+// Get the value of the first node. 
 int front(const LinkedList list) {
     if(isEmpty(list.tail)) {
         return ERR_EMPTY_LIST;
@@ -68,6 +70,7 @@ int front(const LinkedList list) {
     return list.tail->next->value;
 }
 
+// Get the last of the first node. 
 int back(const LinkedList list) {
     if(isEmpty(list.tail)) {
         return ERR_EMPTY_LIST;
@@ -76,6 +79,7 @@ int back(const LinkedList list) {
     return list.tail->value;
 }
 
+// Get the length of a linked list. 
 size_t length(LinkedList list) {
     size_t size = 0;
     
@@ -95,6 +99,7 @@ size_t length(LinkedList list) {
     return size;
 }
 
+// Get the value of a node at a given position. 
 int valueAt(const size_t index, LinkedList list) {
     if(isEmpty(list.tail)) {
         return ERR_EMPTY_LIST;
@@ -123,6 +128,7 @@ int valueAt(const size_t index, LinkedList list) {
     return current->value;
 }
 
+// Get the value at the nth node from end. 
 int nthValueFromEnd(const size_t index, LinkedList list) {
     if(isEmpty(list.tail)) {
         return ERR_EMPTY_LIST;
@@ -157,6 +163,7 @@ int nthValueFromEnd(const size_t index, LinkedList list) {
     return behind->value;
 }
 
+// Insert a value at the first position.
 int insert(const int value, LinkedList *list) {
     Node *node = NULL;
     Node *head = (isEmpty(list->tail)) ? NULL : list->tail->next; 
@@ -179,6 +186,7 @@ int insert(const int value, LinkedList *list) {
     return PROCEDURE_ALLOWED;    
 }
 
+// Insert a value at the last position.
 int append(const int value, LinkedList *list) {
     Node *node = NULL;
 
@@ -199,6 +207,8 @@ int append(const int value, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
+// Insert a value at a given position. If list is empty, inserts
+// at the first position.
 int insertAt(const int value, const size_t index, LinkedList *list) {
     Node *node = NULL;
     Node *head = isEmpty(list->tail) ? NULL : list->tail->next;
@@ -240,6 +250,7 @@ int insertAt(const int value, const size_t index, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
+// Removes node at the first position. 
 int removeFromFront(LinkedList *list) {
     if(isEmpty(list->tail)) {
         return ERR_EMPTY_LIST;
@@ -260,6 +271,7 @@ int removeFromFront(LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
+// Removes node at the last position. 
 int removeFromBack(LinkedList *list) {
     if(isEmpty(list->tail)) {
         return ERR_EMPTY_LIST;
@@ -289,6 +301,7 @@ int removeFromBack(LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
+// Removes node at a given position. 
 int removeAt(const size_t index, LinkedList *list) {
     if(isEmpty(list->tail)) {
         return ERR_EMPTY_LIST;
@@ -328,6 +341,7 @@ int removeAt(const size_t index, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
+// Removes the first node that holds a given value. 
 int deleteValue(const int value, LinkedList *list) {
     if(isEmpty(list->tail)) {
         return ERR_EMPTY_LIST;
