@@ -53,12 +53,14 @@ void print(LinkedList list) {
     Node *head = list.tail->next;
     Node *current = head;
 
+    printf("\n");
     do {
         printf("%d ", current->value);
         
         current = current->next;
         
     } while(current != head);
+    printf("\n");
 }
 
 // Get the value of the first node. 
@@ -70,7 +72,7 @@ int front(const LinkedList list) {
     return list.tail->next->value;
 }
 
-// Get the last of the first node. 
+// Get the value of the lastnode. 
 int back(const LinkedList list) {
     if(isEmpty(list.tail)) {
         return ERR_EMPTY_LIST;
@@ -79,7 +81,7 @@ int back(const LinkedList list) {
     return list.tail->value;
 }
 
-// Get the length of a linked list. 
+// Get the length of the linked list. 
 size_t length(LinkedList list) {
     size_t size = 0;
     
@@ -164,7 +166,7 @@ int nthValueFromEnd(const size_t index, LinkedList list) {
 }
 
 // Insert a value at the first position.
-int insert(const int value, LinkedList *list) {
+int insertAtHead(const int value, LinkedList *list) {
     Node *node = NULL;
     Node *head = (isEmpty(list->tail)) ? NULL : list->tail->next; 
     
@@ -187,7 +189,7 @@ int insert(const int value, LinkedList *list) {
 }
 
 // Insert a value at the last position.
-int append(const int value, LinkedList *list) {
+int insertAtTail(const int value, LinkedList *list) {
     Node *node = NULL;
 
     CreateNode(value, &node);
@@ -250,8 +252,8 @@ int insertAt(const int value, const size_t index, LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
-// Removes node at the first position. 
-int removeFromFront(LinkedList *list) {
+// Removes the node at the first position. 
+int deleteHead(LinkedList *list) {
     if(isEmpty(list->tail)) {
         return ERR_EMPTY_LIST;
     }
@@ -271,8 +273,8 @@ int removeFromFront(LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
-// Removes node at the last position. 
-int removeFromBack(LinkedList *list) {
+// Removes the node at the last position. 
+int deleteTail(LinkedList *list) {
     if(isEmpty(list->tail)) {
         return ERR_EMPTY_LIST;
     }
@@ -301,8 +303,8 @@ int removeFromBack(LinkedList *list) {
     return PROCEDURE_ALLOWED;
 }
 
-// Removes node at a given position. 
-int removeAt(const size_t index, LinkedList *list) {
+// Removes the node at a given position. 
+int deleteAt(const size_t index, LinkedList *list) {
     if(isEmpty(list->tail)) {
         return ERR_EMPTY_LIST;
     }
