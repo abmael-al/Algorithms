@@ -194,6 +194,34 @@ void levelOrderTraversal(Node *root) {
     }
 }
 
+int inorderSuccessor(const int value, Node *root) {
+    Node *current = search(root, value);
+    Node *successor = NULL;
+    Node *ancestor = root;
+
+    if(isEmpty(current)) {
+        return ERR_VALUE_DOES_NOT_EXIST_IN_THE_TREE;
+    }
+
+    if(!isEmpty(current->right)) {
+        successor = findMin(current->right);
+
+        return successor->value;
+    }
+
+    while(ancestor != current) {
+        if(value < ancestor->value) {
+            successor = ancestor;
+            ancestor = ancestor->left;
+        }
+        else {
+            ancestor = ancestor->right;
+        }
+    }
+
+    return successor->value;   
+}
+
 int main() {
     Node *root = NULL;
     int arr[] =
@@ -217,6 +245,7 @@ int main() {
     printf("\nHeight: %d", findHeight(root));
     printf("\nMin: %d", findMin(root)->value);
     printf("\nMax: %d", findMax(root)->value);
+    printf("\nInorder successor of 6: %d", inorderSuccessor(6, root));
 
     return 0;
 }
