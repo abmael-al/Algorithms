@@ -4,6 +4,7 @@
 #include "../queue/queue-generic/Queue.h"
 
 #define ERR_EMPTY_TREE -1
+#define ERR_VALUE_DOES_NOT_EXIST_IN_THE_TREE -2
 
 typedef struct Node {
     int value;
@@ -25,9 +26,9 @@ int isEmpty(const Node *node) {
     return node == NULL;
 }
 
-int findMin(Node* root) {
+Node * findMin(Node* root) {
     if(isEmpty(root)) {
-        return ERR_EMPTY_TREE;
+        return NULL;
     }
 
     Node *current = root;
@@ -36,12 +37,12 @@ int findMin(Node* root) {
         current = current->left;
     }
 
-    return current->value;
+    return current;
 }
 
-int findMax(Node *root) {
+Node * findMax(Node *root) {
     if(isEmpty(root)) {
-        return ERR_EMPTY_TREE;
+        return NULL;
     }
 
     Node *current = root;
@@ -50,7 +51,7 @@ int findMax(Node *root) {
         current = current->right;
     }
 
-    return current->value;
+    return current;
 }
 
 // Height: number of edges in longest path 
@@ -214,8 +215,8 @@ int main() {
     levelOrderTraversal(root);
 
     printf("\nHeight: %d", findHeight(root));
-    printf("\nMin: %d", findMin(root));
-    printf("\nMax: %d", findMax(root));
+    printf("\nMin: %d", findMin(root)->value);
+    printf("\nMax: %d", findMax(root)->value);
 
     return 0;
 }
