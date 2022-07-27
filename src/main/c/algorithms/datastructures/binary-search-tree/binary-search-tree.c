@@ -111,6 +111,10 @@ bool hasOneChild(const Node *root) {
         || (root->right != NULL && root->left == NULL); 
 }
 
+bool hasTwoChildren(const Node *root) {
+    return root->left != NULL && root->right != NULL;
+}
+
 Node * search(Node *root, const int value) {
     Node *current = root;
 
