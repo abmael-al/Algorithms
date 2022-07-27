@@ -102,6 +102,10 @@ void insert(const int value, Node **root) {
     }
 }
 
+bool hasChild(const Node *root) {
+    return root->left != NULL || root->right != NULL;
+}
+
 Node * search(Node *root, const int value) {
     Node *current = root;
 
@@ -233,19 +237,19 @@ int main() {
         insert(arr[i], &root);
     }
 
-    printf("\nPreorder traversal: ");
+    printf("\n Preorder traversal: ");
     preorderTraversal(root);
-    printf("\nInorder traversal: ");
+    printf("\n Inorder traversal: ");
     inorderTraversal(root);
-    printf("\nPostorder traversal: ");
+    printf("\n Postorder traversal: ");
     postorderTraversal(root);
-    printf("\nLevelorder travesal: ");
+    printf("\n Levelorder travesal: ");
     levelOrderTraversal(root);
 
-    printf("\nHeight: %d", findHeight(root));
-    printf("\nMin: %d", findMin(root)->value);
-    printf("\nMax: %d", findMax(root)->value);
-    printf("\nInorder successor of 6: %d", inorderSuccessor(6, root));
+    printf("\n Height: %d", findHeight(root));
+    printf("\n Min: %d", findMin(root)->value);
+    printf("\n Max: %d", findMax(root)->value);
+    printf("\n Inorder successor of 6: %d", inorderSuccessor(6, root));
 
     return 0;
 }
