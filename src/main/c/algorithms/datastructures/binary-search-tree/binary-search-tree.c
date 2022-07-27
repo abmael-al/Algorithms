@@ -115,6 +115,10 @@ bool hasTwoChildren(const Node *root) {
     return root->left != NULL && root->right != NULL;
 }
 
+bool isLeaf(const Node *root) {
+    return !hasChild(root);
+}
+
 Node * search(Node *root, const int value) {
     Node *current = root;
 
