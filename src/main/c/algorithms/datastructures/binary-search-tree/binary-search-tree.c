@@ -119,6 +119,53 @@ bool isLeaf(const Node *root) {
     return !hasChild(root);
 }
 
+Node * delete(const int value, Node *root) {
+    if(isEmpty(root)) {
+        return NULL;
+    }
+
+    else if(value < root->value) {
+        root->left = delete(value, root->left);
+    }
+
+    else if(value > root->value) {
+        root->right = delete(value, root->right);
+    }
+
+    else {
+        if(isLeaf(root)) {
+            free(root);
+            
+            root = NULL;
+        }
+
+        /* Has one child */
+        else if(isEmpty(root->left)) {
+            Node *temp = root;
+            root = root->right;
+
+            free(temp);
+        }
+
+        /* Has one child */
+        else if(isEmpty(root->right)) {
+            Node *temp = root;
+            root = root->left;
+
+            free(temp);
+        }
+
+        else if(hasTwoChildren(root)) {
+            Node *minAtRightSubtree = findMin(root->right);
+
+            root->value = minAtRightSubtree->value;
+            root->right = delete(minAtRightSubtree->value, root->right);            
+        }
+    }
+
+    return root;
+}
+
 Node * search(Node *root, const int value) {
     Node *current = root;
 
