@@ -311,5 +311,8 @@ int main() {
     printf("\n Max: %d", findMax(root)->value);
     printf("\n Inorder successor of 6: %d", inorderSuccessor(6, root));
 
+    root = delete(54, root);
+    printf("\n Root: %d \n", root->value);
+
     return 0;
 }
