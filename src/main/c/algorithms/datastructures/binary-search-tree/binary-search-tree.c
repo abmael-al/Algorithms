@@ -184,6 +184,24 @@ Node * search(Node *root, const int value) {
     return NULL;
 }
 
+bool isBinarySearchTreeUtil(Node *root, const int min, const int max) {
+    if(isEmpty(root)) {
+        return true;
+    }
+    
+    if(root->value >= min && root->value <= max
+     && isBinarySearchTreeUtil(root->left, min, root->value)
+     && isBinarySearchTreeUtil(root->right, root->value, max)) {
+        return true;
+    }
+
+    return false;
+}
+
+bool isBinarySearchTree(Node *root) {
+    return isBinarySearchTreeUtil(root, INT_MIN, INT_MAX);
+}
+
 // --- TREE TRAVERSAL: DEPTH-FIRST  ---
 // Go as deep as possible down one path before  backing up 
 // and trying a different one.
@@ -288,6 +306,7 @@ int inorderSuccessor(const int value, Node *root) {
 
 int main() {
     Node *root = NULL;
+
     int arr[] =
             { 54, 6, 1, 16, 24, 4, 12, 8,
               98, 81, 11, 7, 3, 12, 5, 9 };
